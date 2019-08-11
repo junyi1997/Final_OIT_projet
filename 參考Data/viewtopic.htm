@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-gb">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1123.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>How to make a non-blocking delay on Tkinter? - Raspberry Pi Forums</title>
+
+	<link rel="alternate" type="application/atom+xml" title="Feed - Raspberry Pi Forums" href="/forums/app.php/feed?sid=e75479a50d2c5ff0cb95755d5c01ea7a">			<link rel="alternate" type="application/atom+xml" title="Feed - New Topics" href="/forums/app.php/feed/topics?sid=e75479a50d2c5ff0cb95755d5c01ea7a">		<link rel="alternate" type="application/atom+xml" title="Feed - Forum - Beginners" href="/forums/app.php/feed/forum/91?sid=e75479a50d2c5ff0cb95755d5c01ea7a">	<link rel="alternate" type="application/atom+xml" title="Feed - Topic - How to make a non-blocking delay on Tkinter?" href="/forums/app.php/feed/topic/224966?sid=e75479a50d2c5ff0cb95755d5c01ea7a">
+	
+
+<!--[if IE]><link rel="shortcut icon" href="./styles/rpi/theme/images/favicon.png"><![endif]-->
+<!-- <link rel="apple-touch-icon-precomposed" href="./styles/rpi/theme/images/apple-touch-icon-precomposed.gif"> -->
+<link rel="icon" href="./styles/rpi/theme/images/favicon.png" />
+<link rel="icon" sizes="16x16" href="./styles/rpi/theme/images/favicon.png" />
+
+	<link rel="canonical" href="https://www.raspberrypi.org/forums/viewtopic.php?t=224966" />
+
+<link rel="preconnect stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Space+Mono">
+<link rel="preconnect stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" media="all" type="text/css" crossorigin>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="https://www.raspberrypi.org/app/themes/mind-control/style.min.css?ver=1531911812" />
+<link href="./styles/rpi/theme/stylesheet.css?assets_version=72" rel="stylesheet" type="text/css" media="screen, projection" />
+<link href="./styles/rpi/theme/colours_rpi.css?assets_version=72" rel="stylesheet" type="text/css" media="screen, projection" />
+<link href="./styles/rpi/theme/print.css?assets_version=72" rel="stylesheet" type="text/css" media="print" />
+
+
+
+
+
+
+</head>
+
+<body id="phpbb" class=" nojs notouch section-viewtopic ltr  section-forums">
+
+
+<div id="overall-wrap">
+	<a id="top" class="anchor" accesskey="t"></a>
+	<header class="o-header">
+	    <nav class="o-container o-header__container">
+	        <a class="o-header__link o-header__link--home c-big-link c-big-link--home" href="/">
+	            <span class="u-visually-hidden">Home</span>
+	        </a>
+
+	        <ul class="o-header__nav c-nav">
+	            <li class="c-nav__item">
+	                <a class="c-nav__link c-nav__link--blog" href="/blog">Blog</a>
+	            </li>
+	            <li class="c-nav__item">
+	                <a class="c-nav__link c-nav__link--downloads" href="/downloads">Downloads</a>
+	            </li>
+	            <li class="c-nav__item">
+	                <a class="c-nav__link c-nav__link--community" href="/community">Community</a>
+	            </li>
+	            <li class="c-nav__item">
+	                <a class="c-nav__link c-nav__link--help" href="/help">Help</a>
+	            </li>
+	            <li class="c-nav__item">
+	                <a class="c-nav__link c-nav__link--forums" href="/forums">Forums</a>
+	            </li>
+	            <li class="c-nav__item">
+	                <a class="c-nav__link c-nav__link--education" href="/education">Education</a>
+	            </li>
+							<li class="c-nav__item">
+								<a class="c-nav__link c-nav__link--projects" href="https://projects.raspberrypi.org">Projects</a>
+							</li>
+	        </ul>
+
+	        <a class="o-header__link o-header__link--products c-big-link c-big-link--products" href="/products">
+	            <span class="u-visually-hidden">Buy a Pi</span>
+	        </a>
+
+	        <span aria-hidden="true" class="o-header__search-toggle c-search-toggle">
+	            <span class="u-visually-hidden">Open Search Input</span>
+	        </span>
+
+	        <span aria-hidden="true" class="o-header__toggle c-nav-toggle">
+	            <span class="c-nav-toggle__inner">
+	                <span class="u-visually-hidden">Open Navigation</span>
+	            </span>
+	        </span>
+	    </nav>
+	</header>
+
+	<div class="o-header__search">
+	    <form class="o-container c-search" role="search" method="GET" action="https://www.raspberrypi.org">
+	        <input class="c-search__input" name="s" placeholder="Search Raspberry Pi" type="search">
+	        <button class="c-search__submit">Search</button>
+	    </form>
+	</div>
+
+	<script>
+	    var header = document.querySelector('.o-header')
+	    var navToggle = document.querySelector('.c-nav-toggle')
+	    var searchToggle = document.querySelector('.c-search-toggle')
+
+	    navToggle.addEventListener('click', function (event) {
+	        event.preventDefault()
+
+	        var navToggleInner = document.querySelector('.c-nav-toggle__inner')
+
+	        header.classList.toggle('o-header--nav-open')
+	        navToggle.classList.toggle('c-nav-toggle--open')
+	        navToggleInner.classList.toggle('c-nav-toggle__inner--open')
+	    })
+
+	    searchToggle.addEventListener('click', function (event) {
+	        event.preventDefault()
+
+	        var productsLink = document.querySelector('.c-big-link--products')
+	        var searchContainer = document.querySelector('.o-header__search')
+	        var searchInput = document.querySelector('.c-search__input')
+
+	        searchInput.blur()
+	        productsLink.classList.toggle('c-big-link--search-open')
+	        searchToggle.classList.toggle('c-search-toggle--open')
+	        searchContainer.classList.toggle('o-header__search--open')
+
+	        if (searchContainer.classList.contains('o-header__search--open')) {
+	            searchInput.focus()
+	        }
+	    })
+	</script>
+	<div id="wrap-head">
+		<div id="site-header">
+			<div class="chunk">
+				<ul id="site-menu">
+					<li data-skip-responsive="true" class="site-menu"><a href="https://www.raspberrypi.org/quick-start-guide">Quick Start Guide</a></li>
+<li data-skip-responsive="true" class="site-menu"><a href="/forums/app.php/help/faq?sid=e75479a50d2c5ff0cb95755d5c01ea7a" rel="help" title="Frequently Asked Questions">Forum FAQ</a></li>
+<li class="site-menu">
+	<a href="#" title="About">About</a>
+	<ul>
+		<li><a href="https://www.raspberrypi.org/about">About us</a></li>
+		<li><a href="https://www.raspberrypi.org/contact-us">Contact us</a></li>
+		<li><a href="https://www.raspberrypi.org/technical-help-and-resource-documents">Technical, help and resource documents</a></li>
+		<li><a href="https://www.raspberrypi.org/trademark-rules">Trademark rules</a></li>
+	</ul>
+</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="site-nav" role="navigation">
+			<div class="chunk">
+
+				
+				<div class="site-nav">
+
+					
+										<div id="site-search" role="search">
+						<form action="./search.php?sid=e75479a50d2c5ff0cb95755d5c01ea7a" method="get">
+							<fieldset>
+								<input name="keywords" type="search" maxlength="128" title="Search for keywords" size="20" value="" placeholder="Search" /><button type="submit" title="Search"><i class="fa fa-search"></i></button><input type="hidden" name="sid" value="e75479a50d2c5ff0cb95755d5c01ea7a" />
+
+							</fieldset>
+						</form>
+					</div>
+					
+					<ul role="menubar">
+											<li class="font-icon rightside"  data-skip-responsive="true"><a href="./ucp.php?mode=login&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Login" accesskey="x" role="menuitem"><i class="fa fa-power-off"></i><span class="nav-rh-2">Login</span></a></li>
+												<li class="font-icon rightside" data-skip-responsive="true"><a href="./ucp.php?mode=register&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" role="menuitem"><i class="fa fa-pencil-square-o"></i><span class="nav-rh-2">Register</span></a></li>
+																																		</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<a id="start_here" class="anchor"></a>
+		
+		
+<div id="wrap-subhead">
+	<div class="chunk">
+		<div class="wrap-subhead">
+			<ul id="breadcrumbs" role="menubar">
+				<li class="font-icon responsive-menu dropdown-container" data-skip-responsive="true">
+  <a href="#" class="responsive-menu-link dropdown-trigger"><i class="fa fa-bars"></i></a>
+  <div class="dropdown hidden">
+    <div class="pointer"><div class="pointer-inner"></div></div>
+    <ul class="dropdown-contents" role="menu">
+      
+              <li class="separator"></li>
+                                <li class="font-icon icon-search-unanswered"><a href="./search.php?search_id=unanswered&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" role="menuitem"><i class="fa fa-file-o"></i>Unanswered topics</a></li>
+        <li class="font-icon icon-search-active"><a href="./search.php?search_id=active_topics&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" role="menuitem"><i class="fa fa-fire"></i>Active topics</a></li>
+            <li class="separator site-menu"></li>
+
+      <li data-skip-responsive="true" class="site-menu"><a href="https://www.raspberrypi.org/quick-start-guide">Quick Start Guide</a></li>
+<li data-skip-responsive="true" class="site-menu"><a href="/forums/app.php/help/faq?sid=e75479a50d2c5ff0cb95755d5c01ea7a" rel="help" title="Frequently Asked Questions">Forum FAQ</a></li>
+<li class="site-menu">
+	<a href="#" title="About">About</a>
+	<ul>
+		<li><a href="https://www.raspberrypi.org/about">About us</a></li>
+		<li><a href="https://www.raspberrypi.org/contact-us">Contact us</a></li>
+		<li><a href="https://www.raspberrypi.org/technical-help-and-resource-documents">Technical, help and resource documents</a></li>
+		<li><a href="https://www.raspberrypi.org/trademark-rules">Trademark rules</a></li>
+	</ul>
+</li>
+
+          </ul>
+  </div>
+</li>
+												<li class="breadcrumbs rightside">
+															<span class="crumb"><a href="./index.php?sid=e75479a50d2c5ff0cb95755d5c01ea7a" accesskey="h" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" data-navbar-reference="index"><i class="fa fa-home"></i><span>Board index</span></a></span>
+																	<span class="crumb"><a href="./viewforum.php?f=12&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" data-forum-id="12">Using the Raspberry Pi</a></span>
+																							<span class="crumb"><a href="./viewforum.php?f=91&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" data-forum-id="91">Beginners</a></span>
+																				</li>
+							</ul>
+
+		</div>
+
+		<div id="subhead-title">
+			<h2 class="topic-title"><a href="./viewtopic.php?f=91&amp;t=224966&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">How to make a non-blocking delay on Tkinter?</a></h2>
+			
+					</div>
+
+	</div>
+</div>
+
+<div id="wrap-body">
+	<div class="chunk">
+
+		
+		<div class="action-bar top">
+
+			<div class="buttons">
+				
+							<a href="./posting.php?mode=reply&amp;f=91&amp;t=224966&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="button font-icon" title="Post a reply">
+					<i class="fa fa-reply"></i>Post Reply				</a>
+			
+							</div>
+
+				<div class="dropdown-container dropdown-button-control topic-tools">
+		<span title="Topic tools" class="button icon-button tools-icon dropdown-trigger dropdown-select"><i class="fa fa-wrench"></i></span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+																								<li class="font-icon icon-print"><a href="./viewtopic.php?f=91&amp;t=224966&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a&amp;view=print" title="Print view" accesskey="p"><i class="fa fa-print"></i>Print view</a></li>							</ul>
+		</div>
+	</div>
+
+			
+							<div class="search-box" role="search">
+					<form method="get" id="topic-search" action="./search.php?sid=e75479a50d2c5ff0cb95755d5c01ea7a">
+					<fieldset>
+						<input class="inputbox search"  type="search" name="keywords" id="search_keywords" size="20" placeholder="Search this topic…" />
+						<button class="button" type="submit" title="Search"><i class="fa fa-search"></i></button>
+						<input type="hidden" name="t" value="224966" />
+<input type="hidden" name="sf" value="msgonly" />
+<input type="hidden" name="sid" value="e75479a50d2c5ff0cb95755d5c01ea7a" />
+
+					</fieldset>
+					</form>
+				</div>
+			
+							<div class="pagination">
+					9 posts
+											&bull; Page <strong>1</strong> of <strong>1</strong>
+									</div>
+			
+			
+		</div>
+
+		
+		
+		
+											<div id="p1381390" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381390">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=267442&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">XaviPacheco</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=267442&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">28</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 11, 2018 1:41 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381390">
+					
+					<h3 class="first"><a href="#p1381390">How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381390&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381390&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381390">Wed Oct 17, 2018 12:01 pm</a> </p>
+
+					
+					
+					
+					<div class="content">The following code is a stopwatch on Tkinter which has GPIO involved. I tried adding time.sleep for debouncing the button, but it also delays the stopwatch execution. Makes sense. But I just started using Python and Tkinter, so I don't know how to deal with this for now. Does anyone have a suggestion?<br>
+
+<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>#!/usr/bin/env python3
+import tkinter as tk
+from threading import Thread
+import RPi.GPIO as GPIO
+import time
+import serial
+
+# GPIO BOARD PIN numbers
+
+# setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+ser = serial.Serial ("/dev/ttyS0", 9600)
+
+GPIO.setup(21, GPIO.IN)
+GPIO.setup(20, GPIO.IN)
+GPIO.setup(16, GPIO.IN)
+GPIO.setup(26, GPIO.IN)
+GPIO.setup(19, GPIO.IN)
+GPIO.setup(13, GPIO.IN)
+
+# Simple status flag
+# False mean the timer is not running
+# True means the timer is running (counting)
+running = False
+
+def update_timeText():
+   global running
+   global timer
+   if running == False and GPIO.input(16) == False:
+      running = True
+      print('Start')
+      ser.write(b'3')
+      time.sleep(0.3)  
+   elif running == True and GPIO.input(13) == False:
+       running = False
+       print('Stop')
+       ser.write(b'6')
+       time.sleep(0.3)      
+   elif timer != [0, 0, 0] and running == False and GPIO.input(13) == False:
+       timer = [0, 0, 0]
+       timeText.configure(text='00:00:00')  
+   elif timer != [0, 0, 0] and running == False and GPIO.input(16) == False:
+       running = True
+       print('Start')
+       ser.write(b'3')
+       time.sleep(0.3)    
+   elif running == True and GPIO.input(20) == False:
+        print('Speed up')
+        ser.write(b'2')
+        time.sleep(0.3)     
+   elif running == True and GPIO.input(21) == False:
+        print('Speed down')
+        ser.write(b'1')
+        time.sleep(0.3)
+   if running:
+# Every time this function is called, we will increment 1 centisecond (1/100 of a second)
+        timer[2] += 1
+      # Every 100 centisecond is equal to 1 second
+        if (timer[2] &gt;= 100):
+           timer[2] = 0
+           timer[1] += 1
+         # Every 60 seconds is equal to 1 min
+           if (timer[1] &gt;= 60):
+             timer[0] += 1
+             timer[1] = 0
+
+# We create our time string here
+   timeString = pattern.format(timer[0], timer[1], timer[2])
+# Update the timeText Label box with the current time
+   timeText.configure(text=timeString)
+# Call the update_timeText() function after 1 centisecond
+   root.after(10, update_timeText)
+
+# To start the timer
+def start():
+   global running
+   running = True
+
+# To pause the kitchen timer
+def pause():
+   global running
+   running = False
+
+# To reset the timer to 00:00:00
+def reset():
+   global timer
+   timer = [0, 0, 0]
+   timeText.configure(text='00:00:00')
+
+# To exit our program
+def exit():
+    root.destroy()
+
+def exitt(event):
+    root.destroy()
+
+root = tk.Tk()
+
+root.attributes("-fullscreen",True)
+root.wm_attributes("-topmost",1)
+root.bind("&lt;Escape&gt;", exitt)
+
+button_frame = tk.Frame(root)
+button_frame.pack(fill=tk.X, side=tk.BOTTOM)
+
+start_button = tk.Button(button_frame, text='Start', command=start, width = 12 , height = 3,bg="green")
+stop_button =  tk.Button(button_frame, text='Stop',  command=pause, width = 12 , height = 3,bg="red")
+reset_button = tk.Button(button_frame, text='Reset', command=reset, width = 12 , height = 3,bg="yellow")
+quit_button =  tk.Button(button_frame, text='Quit',  command=exit, width = 12 , height = 3,bg="grey")
+
+button_frame.columnconfigure(0, weight=1)
+button_frame.columnconfigure(1, weight=1)
+button_frame.columnconfigure(2, weight=1)
+button_frame.columnconfigure(3, weight=1)
+
+start_button.grid(row=0, column=0, sticky=tk.W+tk.E)
+stop_button.grid(row=0, column=1, sticky=tk.W+tk.E)
+reset_button.grid(row=0, column=2, sticky=tk.W+tk.E)
+quit_button.grid(row=0, column=3, sticky=tk.W+tk.E)
+
+
+# Our time structure [min, sec, centsec]
+timer = [0, 0, 0]
+# The format is padding all the 
+pattern = '{0:02d}:{1:02d}:{2:02d}'
+
+# Create a timeText Label (a text box)
+timeText = tk.Label(root, text="00:00:00", font=("Helvetica", 150))
+timeText.pack()
+
+update_timeText()
+root.mainloop()</code></pre></div></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381396" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381396">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=20512&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">scotty101</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=20512&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">3545</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri Jun 08, 2012 6:03 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381396">
+					
+					<h3 ><a href="#p1381396">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381396&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381396&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381396">Wed Oct 17, 2018 12:19 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Two methods.<br>
+<br>
+1. Split up your code in to smaller functions which are called with the .after method. I'd use a function which acts as a state machine, it remembers what state it was in last time, performs the next action, sets which state it should move in to next and calls the .after method with an appropriate delay.<br>
+<br>
+2. Use threading and split your serial comms part in to a separate thread where you can use time.sleep without it delaying the tkinter mainloop. However looking at your code, do you really need the time.sleep(0.3)? What purpose does it serve that can't be achieved with .after?</div>
+
+					
+															
+															<div id="sig1381396" class="signature">Electronic and Computer Engineer<br>
+Pi Interests: Home Automation, IOT, Python and Tkinter</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381398" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381398">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=267442&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">XaviPacheco</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=267442&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">28</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 11, 2018 1:41 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381398">
+					
+					<h3 ><a href="#p1381398">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381398&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381398&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381398">Wed Oct 17, 2018 12:27 pm</a> </p>
+
+					
+					
+					
+					<div class="content">That's the point. I'm not sure about using time.sleep. But, when I don't use it, my button debounces causing undesired pulses. If I use it, the button works well, but delays the execution of the stopwatch timer.</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381403" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381403">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=20512&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">scotty101</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=20512&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">3545</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri Jun 08, 2012 6:03 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381403">
+					
+					<h3 ><a href="#p1381403">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381403&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381403&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381403">Wed Oct 17, 2018 12:39 pm</a> </p>
+
+					
+					
+					
+					<div class="content">I'd consider putting your GPIO button read calls in a separate function to the one that updates the display. Display function is called every "centi-second" but the GPIO function is called less frequently to debounce the button. The two communicate though a variable which is used to start/stop the timer.<br>
+<br>
+Or use GPIO callbacks, they can have a debounce time set on them.</div>
+
+					
+															
+															<div id="sig1381403" class="signature">Electronic and Computer Engineer<br>
+Pi Interests: Home Automation, IOT, Python and Tkinter</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381405" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381405">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=254113&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">Idahowalker</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=254113&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">445</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Wed Jan 03, 2018 5:43 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381405">
+					
+					<h3 ><a href="#p1381405">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381405&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381405&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381405">Wed Oct 17, 2018 12:52 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Consider using the <div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=200)</code></pre></div> bouncetime to delay the responsiveness of the switch press. I, out of curiosity, tested out the idea with using a 32kHz interrupt routine. I took the frequency of 16kHz got the time period, used that as the bouncetime and about halved the interrupt response time. My idea was to see if bouncetime could be used as a frequency divider.</div>
+
+					
+															
+															<div id="sig1381405" class="signature">Without knowing why you are deleting my postings, I will not know how...</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381676" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381676">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=267442&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">XaviPacheco</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=267442&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">28</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 11, 2018 1:41 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381676">
+					
+					<h3 ><a href="#p1381676">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381676&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381676&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381676">Thu Oct 18, 2018 5:33 am</a> </p>
+
+					
+					
+					
+					<div class="content">I'm using threading, but the function never gets called.<br>
+
+<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>def push_buttons():
+
+    if running == True and GPIO.input(20) == False:
+        #print('Speed up')
+        ser.write(b'2')
+        time.sleep(0.3)     
+    elif running == True and GPIO.input(21) == False:
+        #print('Speed down')
+        ser.write(b'1')
+        time.sleep(0.3)
+
+root = tk.Tk()
+
+thread = Thread(target=push_buttons)
+thread.start()
+root.mainloop()</code></pre></div></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381760" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381760">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=20512&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">scotty101</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=20512&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">3545</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri Jun 08, 2012 6:03 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381760">
+					
+					<h3 ><a href="#p1381760">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381760&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381760&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381760">Thu Oct 18, 2018 10:06 am</a> </p>
+
+					
+					
+					
+					<div class="content">How have you confirmed that it doesn't get called?<br>
+Try putting a print("Thread Running") at the start of the function.<br>
+<br>
+Also, you are aware that the function will only run once right? If you want it to keep running in the background, the thread should contain a while loop and potentially a time.sleep in order to set how often it will run. <br>
+If you are using a thread, it is safe to do this unlike before when you were running the while loop in the same thread as tkinter.</div>
+
+					
+															
+															<div id="sig1381760" class="signature">Electronic and Computer Engineer<br>
+Pi Interests: Home Automation, IOT, Python and Tkinter</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381788" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381788">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=254113&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">Idahowalker</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=254113&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">445</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Wed Jan 03, 2018 5:43 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381788">
+					
+					<h3 ><a href="#p1381788">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381788&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381788&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381788">Thu Oct 18, 2018 11:48 am</a> </p>
+
+					
+					
+					
+					<div class="content"><div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import threading
+import RPI.GPIO as GPIO
+import time
+
+iOneButtonPin = 20
+ iTwoButtonPin = 21
+iButton = 0
+def fButtonPressCallback( iChannel )
+        global iButton
+        iButton = iChannel
+        oEventButton.set()
+
+def fPush_buttons():
+    while ( not bEndOfTheWorld ):
+        if ( running == True ) and ( iButton == iOneButtonPin ):
+            #print('Speed up')
+            ser.write(b'2')
+            ## time.sleep(0.3)     
+        if ( running == True ) and ( iButton ==  iTwoButtonPin ):
+            #print('Speed down')
+            ser.write(b'1')
+            ## time.sleep(0.3)
+        oEventButton.clear()
+        oEventButton.wait()
+        
+## root = tk.Tk()
+
+GPIO.setup( iHaltPin, GPIO.IN, pull_up_down = GPIO.PUD_UP )
+GPIO.setup( iTwoButtonPin, GPIO.IN, pull_up_down = GPIO.PUD_UP )
+GPIO.setup( iOneButtonPin, GPIO.IN, pull_up_down = GPIO.PUD_UP )
+
+GPIO.add_event_detect( iOneButtonPin, GPIO.FALLING, callback=fButtonPressCallback, bouncetime=20 )
+GPIO.add_event_detect( iTwoButtonPin, GPIO.FALLING, callback=fButtonPressCallback, bouncetime=20 )
+
+oEventButton = threading.event()
+oEventButton.clear()
+
+thread = Thread( target = fPush_buttons )
+thread.start()
+## root.mainloop()
+bEndOfTheWorld = False
+
+GPIO.wait_for_edge( iHalt, GPIO, FALLING )
+bEndOfTheWorld = True # declare its time to quit
+oEventButton.clear() # trigger the event to loop and discover quitting time
+time.sleep( .05 ) # allow some time for the discovery to be acted upon and the thread to exit
+</code></pre></div>
+The above code has NOT been tested but is a demonstration of a principal or way of doing the thing. I may or may not help to debug it.<br>
+<br>
+Three buttons, two for your thing do and the other to cause the program to stop.</div>
+
+					
+															
+															<div id="sig1381788" class="signature">Without knowing why you are deleting my postings, I will not know how...</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+														<div id="p1381798" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1381798">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="./memberlist.php?mode=viewprofile&amp;u=267442&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="username">XaviPacheco</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="./search.php?author_id=267442&amp;sr=posts&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">28</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 11, 2018 1:41 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1381798">
+					
+					<h3 ><a href="#p1381798">Re: How to make a non-blocking delay on Tkinter?</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="./posting.php?mode=quote&amp;f=91&amp;p=1381798&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="./viewtopic.php?p=1381798&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a#p1381798">Thu Oct 18, 2018 12:15 pm</a> </p>
+
+					
+					
+					
+					<div class="content">I added the while loop and time sleep function, and it worked. <br>
+I will try Idahowalker idea though. <br>
+
+<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>def push_buttons():
+    
+    while True:
+        
+     if running == True and GPIO.input(20) == False:
+        print('Speed up')
+        ser.write(b'2')
+        time.sleep(0.3)     
+     elif running == True and GPIO.input(21) == False:
+        #print('Speed down')
+        ser.write(b'1')
+        time.sleep(0.3)
+        
+     time.sleep(0.1)</code></pre></div></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider" />
+					
+		
+					<form id="viewtopic" method="post" action="./viewtopic.php?f=91&amp;t=224966&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">
+			<fieldset class="display-options" style="margin-top: 0; ">
+								<label>Display posts from previous:<select name="st" id="st"><option value="0" selected="selected">All posts</option><option value="1">1 day</option><option value="7">7 days</option><option value="14">2 weeks</option><option value="30">1 month</option><option value="90">3 months</option><option value="180">6 months</option><option value="365">1 year</option></select></label><label>Sort by<select name="sk" id="sk"><option value="a">Author</option><option value="t" selected="selected">Post time</option><option value="s">Subject</option></select></label><label><select name="sd" id="sd"><option value="a" selected="selected">Ascending</option><option value="d">Descending</option></select></label><input type="submit" name="sort" value="Go" class="button2" />
+							</fieldset>
+			</form>
+		
+				<div class="action-bar bottom">
+			<div class="buttons">
+				
+							<a href="./posting.php?mode=reply&amp;f=91&amp;t=224966&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="button font-icon" title="Post a reply">
+					<i class="fa fa-reply"></i>Post Reply				</a>
+			
+							</div>
+
+				<div class="dropdown-container dropdown-button-control topic-tools">
+		<span title="Topic tools" class="button icon-button tools-icon dropdown-trigger dropdown-select"><i class="fa fa-wrench"></i></span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+																								<li class="font-icon icon-print"><a href="./viewtopic.php?f=91&amp;t=224966&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a&amp;view=print" title="Print view" accesskey="p"><i class="fa fa-print"></i>Print view</a></li>							</ul>
+		</div>
+	</div>
+
+			
+			
+							<div class="pagination">
+					9 posts
+											&bull; Page <strong>1</strong> of <strong>1</strong>
+									</div>
+						<div class="clear"></div>
+		</div>
+
+				
+	<p class="jumpbox-return"><a href="./viewforum.php?f=91&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" class="left-box arrow-left" accesskey="r">Return to “Beginners”</a></p>
+
+	<div class="dropdown-container dropdown-container-right dropdown-up dropdown-left dropdown-button-control" id="jumpbox">
+		<span title="Jump to" class="dropdown-trigger button dropdown-select">
+			Jump to		</span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+																			<li><a href="./viewforum.php?f=19&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Community</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=63&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">General discussion</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=117&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Announcements</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=90&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Other languages</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=75&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Deutsch</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=76&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Español</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=65&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Français</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=79&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Italiano</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=88&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Nederlands</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=82&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">日本語</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=103&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Polski</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=74&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Português</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=84&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Русский</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=89&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Türkçe</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=57&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">User groups and events</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=106&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">The MagPi</a></li>
+																<li><a href="./viewforum.php?f=12&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Using the Raspberry Pi</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=91&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Beginners</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=28&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Troubleshooting</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=29&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Advanced users</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=102&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Assistive technology and accessibility</a></li>
+																<li><a href="./viewforum.php?f=17&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Education</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=99&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Picademy</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=49&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Teaching and learning resources</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=48&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Staffroom, classroom and projects</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=104&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Astro Pi</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=94&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Mathematica</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=111&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">High Altitude Balloon</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=112&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Weather station</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=120&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Code Club</a></li>
+																<li><a href="./viewforum.php?f=14&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Programming</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=33&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">C/C++</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=81&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Java</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=32&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Python</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=77&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Scratch</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=34&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Other programming languages</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=105&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Windows 10 for IoT</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=95&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Wolfram Language</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=72&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Bare metal, Assembly language</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=67&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Graphics programming</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=68&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">OpenGLES</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=69&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">OpenVG</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=70&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">OpenMAX</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=31&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">General programming discussion</a></li>
+																<li><a href="./viewforum.php?f=15&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Projects</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=36&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Networking and servers</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=37&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Automation, sensing and robotics</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=38&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Graphics, sound and multimedia</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=41&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Other projects</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=35&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Media centres</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=78&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Gaming</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=114&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">AIY Projects</a></li>
+																<li><a href="./viewforum.php?f=16&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Hardware and peripherals</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=43&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Camera board</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=98&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Compute Module</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=108&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Official Foundation Display</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=45&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">HATs and other add-ons</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=107&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Device Tree</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=44&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Interfacing (DSI, CSI, I2C, etc.)</a></li>
+																<li><a href="./viewforum.php?f=18&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Operating system distributions</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=66&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Raspbian</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=116&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Raspberry Pi Desktop for PC and Mac</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=56&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Other</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=73&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Android</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=50&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Debian</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=85&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">FreeBSD</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=54&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Gentoo</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=71&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Linux Kernel</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=86&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">NetBSD</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=87&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">openSUSE</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=80&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Plan 9</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=52&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Puppy</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=53&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Arch</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=51&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Pidora / Fedora</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="./viewforum.php?f=55&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">RISCOS</a></li>
+																<li><a href="./viewforum.php?f=20&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Ye Olde Pi Shoppe</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=93&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">For sale</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=61&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Wanted</a></li>
+																<li><a href="./viewforum.php?f=21&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Off topic</a></li>
+																<li>&nbsp; &nbsp;<a href="./viewforum.php?f=62&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a">Off topic discussion</a></li>
+										</ul>
+		</div>
+	</div>
+
+		
+	</div>
+</div>
+
+		
+	
+	<div id="wrap-footer">
+		<div id="site-footer-nav" role="navigation">
+			<div class="chunk">
+				<ul class="site-footer-nav" role="menubar">
+					<li class="small-icon icon-home breadcrumbs">
+																		<span class="crumb"><a href="./index.php?sid=e75479a50d2c5ff0cb95755d5c01ea7a" data-navbar-reference="index">Board index</a></span>
+											</li>
+					
+										<li class="rightside">All times are <span title="UTC">UTC</span></li>
+																<li class="small-icon icon-delete-cookies rightside"><a href="./ucp.php?mode=delete_cookies&amp;sid=e75479a50d2c5ff0cb95755d5c01ea7a" data-ajax="true" data-refresh="true" role="menuitem">Delete all board cookies</a></li>
+															</ul>
+			</div>
+		</div>
+
+		<footer class="o-footer">
+		    <div class="o-container">
+		        <div class="o-footer__grid">
+		            <div class="o-footer__social">
+		                <ul class="c-footer-social">
+		                    <li class="c-footer-social__item">
+		                        <a class="c-footer-social__link c-footer-social__link--facebook" href="https://www.facebook.com/raspberrypi">
+		                            <span class="u-visually-hidden">Like Raspberry Pi on Facebook</span>
+		                        </a>
+		                    </li>
+		                    <li class="c-footer-social__item">
+		                        <a class="c-footer-social__link c-footer-social__link--twitter" href="https://twitter.com/Raspberry_Pi">
+		                            <span class="u-visually-hidden">Follow Raspberry Pi on Twitter</span>
+		                        </a>
+		                    </li>
+		                    <li class="c-footer-social__item">
+		                        <a class="c-footer-social__link c-footer-social__link--instagram" href="https://www.instagram.com/raspberrypifoundation/">
+		                            <span class="u-visually-hidden">Check out what we’re having for lunch on Instagram</span>
+		                        </a>
+		                    </li>
+		                    <li class="c-footer-social__item">
+		                        <a class="c-footer-social__link c-footer-social__link--youtube" href="https://youtube.com/raspberrypi">
+		                            <span class="u-visually-hidden">Subscribe to the Raspberry Pi YouTube channel</span>
+		                        </a>
+		                    </li>
+		                </ul>
+		            </div>
+
+		            <div class="o-footer__nav">
+		                <div class="o-footer__nav-about">
+		                    <div class="c-footer-nav">
+		                        <span class="c-footer-nav__title">About Us</span>
+
+		                        <ul class="c-footer-nav__list">
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/about">About us</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/about/meet-the-team">Our team</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/about/governance">Governance</a>
+		                            </li>
+					    <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/safeguarding">Safeguarding</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/about/supporters">Our supporters</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="https://raspberrypi.workable.com/">Jobs</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/contact">Contact us</a>
+		                            </li>
+		                        </ul>
+		                    </div>
+		                </div>
+
+		                <div class="o-footer__nav-support">
+		                    <div class="c-footer-nav">
+		                        <span class="c-footer-nav__title">Support</span>
+
+		                        <ul class="c-footer-nav__list">
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/help">Help</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/documentation">Documentation</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="https://projects.raspberrypi.org/">Projects</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/training">Training</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/downloads">Downloads</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/research-and-insights">Research</a>
+		                            </li>
+		                            <li class="c-footer-nav__item">
+		                                <a class="c-footer-nav__link" href="/help/faqs">FAQ</a>
+		                            </li>
+		                        </ul>
+		                    </div>
+		                </div>
+		            </div>
+
+		            <div class="o-footer__newsletter">
+		                <form
+		                    action="https://raspberrypi.hosted.phplist.com/lists/?p=subscribe&amp;id=1"
+		                    class="c-footer-newsletter"
+		                    method="POST"
+		                >
+		                    <span class="c-footer-newsletter__legend">
+		                        Sign up to our newsletter
+		                    </span>
+		                    <input
+		                        class="c-footer-newsletter__input"
+		                        name="email"
+		                        placeholder="Your email here"
+		                        required
+		                        type="email"
+		                    />
+		                    <input type="hidden" name="htmlemail" value="1" />
+		                    <input type="hidden" name="list[3]" value="signup" />
+		                    <input type="hidden" name="listname[3]" value="Raspberry Pi Weekly" />
+		                    <input
+		                        class="c-footer-newsletter__input--verification-code"
+		                        type="text"
+		                        name="VerificationCodeX"
+		                        value=""
+		                        size="20"
+		                    />
+		                    <button class="c-footer-newsletter__button" name="subscribe">
+		                        Subscribe
+		                    </button>
+		                </form>
+		            </div>
+
+		            <div class="o-footer__charity">
+		                <p class="c-footer-charity">
+		                    Raspberry Pi Foundation<br>
+		                    UK Registered Charity 1129409
+		                </p>
+		            </div>
+
+		            <div class="o-footer__additional">
+		                <p class="c-footer-additional">
+		                    <a class="c-footer-additional__link" href="/privacy">Privacy</a>
+		                    <a class="c-footer-additional__link" href="/cookies">Cookies</a>
+		                    <a class="c-footer-additional__link" href="/trademark-rules">Trademark rules and brand guidelines</a>
+		                </p>
+		            </div>
+		        </div>
+		    </div>
+		</footer>
+
+		<div id="darkenwrapper" data-ajax-error-title="AJAX error" data-ajax-error-text="Something went wrong when processing your request." data-ajax-error-text-abort="User aborted request." data-ajax-error-text-timeout="Your request timed out; please try again." data-ajax-error-text-parsererror="Something went wrong with the request and the server returned an invalid reply.">
+			<div id="darken">&nbsp;</div>
+		</div>
+
+		<div id="phpbb_alert" class="phpbb_alert" data-l-err="Error" data-l-timeout-processing-req="Request timed out.">
+			<a href="#" class="alert_close"></a>
+			<h3 class="alert_title">&nbsp;</h3><p class="alert_text"></p>
+		</div>
+		<div id="phpbb_confirm" class="phpbb_alert">
+			<a href="#" class="alert_close"></a>
+			<div class="alert_text"></div>
+		</div>
+
+		<div style="display: none;">
+			<a id="bottom" class="anchor" accesskey="z"></a>
+					</div>
+</div>
+
+<script type="text/javascript" src="./assets/javascript/jquery.min.js?assets_version=72"></script>
+<script type="text/javascript" src="./assets/javascript/core.js?assets_version=72"></script>
+<script type="text/javascript" src="/forums/styles/rpi/template/js.cookie.js?assets_version=72"></script>
+<script type="text/javascript" src="/forums/styles/rpi/template/forum_fn.js?assets_version=72"></script>
+<script type="text/javascript" src="/forums/styles/rpi/template/ajax.js?assets_version=72"></script>
+<script type="text/javascript" src="/forums/styles/rpi/template/chosen.jquery.min.js?assets_version=72"></script>
+
+
+<script>
+	$(function() {
+		$("#st, #sd, #sk, #ch").chosen({
+			disable_search: true,
+			width: "auto"
+		});
+	});
+</script>
+
+<script>
+	// $(function() {
+	//
+	// 	var sidebarRecentPostDiv = document.getElementById("sidebar-recent-posts");
+	//
+	// 	$.get('/forums/app.php/feed?sid=e75479a50d2c5ff0cb95755d5c01ea7a', function (data) {
+	// 		$(data).find("entry").each(function (i) {
+	// 			var el = $(this);
+	// 			var entryWrap = document.createElement("div");
+	//
+	// 			var entryTitle = document.createElement("a");
+	// 			var entryAuthor = document.createElement("span");
+	// 			var entryContent = document.createElement("span");
+	//
+	// 			entryTitle.className = ("sidebar-recent-title");
+	// 			entryAuthor.className = ("sidebar-recent-author");
+	// 			entryContent.className = ("sidebar-recent-content");
+	//
+	// 			function cutText(name) {
+	// 				var elementText = el.find(name).text();
+	//
+	// 				if (name == "title") {
+	// 					elementText = elementText.substring(elementText.indexOf("•") + 2);
+	// 				} else if (name == "content") {
+	// 					elementText = elementText.replace(/(<([^>]+)>)/ig,"");
+	// 				}
+	//
+	// 				if (elementText.length > 50) {
+	// 					return elementText.substr(0, 50);
+	// 				} else {
+	// 					return elementText;
+	// 				};
+	// 			};
+	//
+	// 			entryTitle.textContent = cutText("title");
+	// 			entryAuthor.textContent = "by " + cutText("author");
+	// 			entryContent.textContent = cutText("content");
+	// 			entryURL = el.find("id").text();
+	//
+	// 			$(entryTitle).attr("href", entryURL);
+	//
+	// 			entryWrap.appendChild(entryTitle);
+	// 			entryWrap.appendChild(entryAuthor);
+	// 			entryWrap.appendChild(entryContent);
+	//
+	// 			sidebarRecentPostDiv.appendChild(entryWrap);
+	//
+	// 			if (++i >= 5) {
+	// 				return false;
+	// 			}
+	// 		});
+	// 	});
+	//
+	// });
+</script>
+
+
+
+
+
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46270871-9', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript" id="cookiebanner" src="https://cdnjs.cloudflare.com/ajax/libs/cookie-banner/1.2.2/cookiebanner.min.js" data-bg="#999798" data-fg="#ffffff" data-link="#ffffff" data-moreinfo="https://www.raspberrypi.org/cookies" data-accept-on-scroll="true" data-message="We use cookies to ensure that we give you the best experience on our website. By continuing to visit this site you agree to our use of cookies." data-moreinfo-decoration="underline" integrity="sha384-ZtuZyMr5oH1P/r7ZKXXHFBkIZoNaDZ+aHMHxGUZWP0Zfwk6TgyUlgcR5QIx1kj1U" crossorigin="anonymous"></script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"58581d3af9","applicationID":"280694242","transactionName":"bwZRZ0cCX0FUVhVYWVZMZkFcTFddR0AMQhlOClZEQQxBW1YbEVlG","queueTime":0,"applicationTime":55,"atts":"Q0FSEQ8YTE8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
