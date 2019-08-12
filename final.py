@@ -22,7 +22,7 @@ from urllib.parse import quote
 # filebase引用必要套件
 import firebase_admin
 from firebase_admin import credentials
-from firebase_admin import firestore
+from firebase_admin import db
 #threading引用必要套件
 from threading import Thread
 #引用語音說明
@@ -1254,13 +1254,18 @@ class MyApp(object):
 if __name__ == "__main__":
     # 引用私密金鑰
     # path/to/serviceAccount.json 請用自己存放的路徑
-    cred = credentials.Certificate(r'./serviceAccount.json')
+    cred = credentials.Certificate('./serviceAccount.json')
 
     # 初始化firebase，注意不能重複初始化
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://seaturtle-105103308.firebaseio.com/',
+    'databaseAuthVariableOverride': {
+        'uid': 'seaturtle-105103308'
+    }
+})
 
     # 初始化firestore
-    db = firestore.client()
+#    db = firestore.client()
     
     win = tk.Tk()
 #    win.attributes("-fullscreen", True)

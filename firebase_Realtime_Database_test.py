@@ -1,14 +1,43 @@
+#Ref：https://qiita.com/sai-san/items/24dbee74c5744033c330
+
 # -*- coding: utf-8 -*-
-from google.cloud import firebase
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 
-key="PCaUi0xj4e9v1tZ15YKuDalQa1OZOOauNlRqzDnA"
+cred = credentials.Certificate('./serviceAccount.json')
 
-authentication = firebase.FirebaseAuthentication(key, 'q5896799@gmail.com')#這邊是要填入身分驗證，需要資料庫密鑰和google資料庫擁有者帳號
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://seaturtle-105103308.firebaseio.com/',
+    'databaseAuthVariableOverride': {
+        'uid': 'seaturtle-105103308'
+    }
+})
 
-firebase.authentication = authentication #身分驗證
+##databaseに初期データを追加する
+users_ref = db.reference('/users')
 
-user = authentication.get_user() #獲取使用者資訊
+users_ref.set({
+    'user001': {
+        'date_of_birth': 'June 23, 1984',
+        'full_name': 'Sazae Isono'
+        },
+    'user002': {
+        'date_of_birth': 'December 9, 1995',
+        'full_name': 'Tama Isono'
+        }
+    })
 
-firebase = firebase.FirebaseApplication('https://seaturtle-105103308.firebaseio.com/', authentication=authentication) #登入資料庫，網址在資料庫頁面能找到
+# databaseにデータを追加する
+users_ref.child('user003').set({
+    'date_of_birth': 'Aug 23, 1980',
+    'full_name': 'Masuo Isono'
+    })
 
-firebase.post("/ABC","6677")
+##データを取得する
+print(users_ref.get())
+
+##データを更新する
+updates = {}
+updates['/user001/full_name'] = 'AAA'
+users_ref.update(updates)
