@@ -2,18 +2,13 @@
 """
 Created on Mon Jul  1 11:18:02 2019
 
-@author: user1
+@author: Junyi1997
 """
-
 import tkinter as tk
-import tkinter.messagebox as messagebox
 import pickle
-from  tkinter import ttk
 import time
-from tkinter import Tk, Scrollbar, Frame
+from tkinter import Scrollbar, Frame
 from tkinter.ttk import Treeview
-import numpy as np
-from PIL import Image
 
 #IFTTT引用必要套件
 from urllib.request import urlopen
@@ -70,7 +65,7 @@ class MyApp(object):
         self.saveK3=[]#紀錄表格數據
         self.saveK4=[]#紀錄表格數據
         self.list1=[]
-    
+        self.speak=""
 
         """Constructor"""
         self.win = parent
@@ -466,12 +461,9 @@ class MyApp(object):
             self.money=0
             self.sumi_2=0
             #Get Collection
-            doc_ref = db.collection("fb")
-            docs = doc_ref.get()
-            print("docs=",docs)
-            for doc in docs:
-                self.sumi_2+=1
-                self.save4.append(doc.to_dict())
+            users_ref = db.reference('/fb')
+            self.save4.append(users_ref.get())
+            self.sumi_2=len(users_ref.get())
             self.sumi_2_1=self.sumi_2    
             for i in range(0,self.sumi_2):
                 self.saveK1.append(self.save4[i]['sum1'])
@@ -511,12 +503,9 @@ class MyApp(object):
             self.sumi_1=0
             self.money=0
             #Get Collection
-            doc_ref = db.collection("Google")
-            docs = doc_ref.get()
-            print("docs=",docs)
-            for doc in docs:
-                self.sumi_1+=1
-                self.save4.append(doc.to_dict())
+            users_ref = db.reference('/Google')
+            self.save4.append(users_ref.get())
+            self.sumi_1=len(users_ref.get())
             self.sumi_1_1=self.sumi_1    
             print("save4=",self.save4)
             print("sumi_1=",self.sumi_1)
@@ -557,12 +546,9 @@ class MyApp(object):
             self.sumi_3=0
             self.money=0
             #Get Collection
-            doc_ref = db.collection("QR")
-            docs = doc_ref.get()
-            print("docs=",docs)
-            for doc in docs:
-                self.sumi_3+=1
-                self.save4.append(doc.to_dict())
+            users_ref = db.reference('/QR')
+            self.save4.append(users_ref.get())
+            self.sumi_3=len(users_ref.get())
             self.sumi_3_1=self.sumi_3    
             
             for i in range(0,self.sumi_3):
@@ -627,58 +613,52 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def BtnSaveData(self):
         if self.tit == "Google":
+            users_ref = db.reference('/Google')
             for i in range(self.sumi_1_1,self.sumi_1):
-                doc = {
-                    'sum1':i+1,
-                    'name': self.save1[i-self.sumi_1_1],
-                    'SCoin': self.save2[i-self.sumi_1_1],
-                    'time':self.save3[i-self.sumi_1_1]
-                }
                 if i<9:
                     A="第0{:}次".format(i+1)
                 else:
                     A="第{:}次".format(i+1)
-                # 語法
-                # doc_ref = db.collection("集合名稱").document("文件id")
-                doc_ref = db.collection("Google").document(A)
-                # doc_ref提供一個set的方法，input必須是dictionary
-                doc_ref.set(doc)
+                users_ref.set({
+                    A: {
+                        'sum1':i+1,
+                        'name': self.save1[i-self.sumi_1_1],
+                        'SCoin': self.save2[i-self.sumi_1_1],
+                        'time':self.save3[i-self.sumi_1_1]}
+                })
+                
             self.sumi_1_1=self.sumi_1 
         elif self.tit == "fb":
+            users_ref = db.reference('/fb')
             for i in range(self.sumi_2_1,self.sumi_2):
-                doc = {
-                    'sum1':i+1,
-                    'name': self.save1[i-self.sumi_2_1],
-                    'SCoin': self.save2[i-self.sumi_2_1],
-                    'time':self.save3[i-self.sumi_2_1]
-                }
                 if i<9:
                     A="第0{:}次".format(i+1)
                 else:
                     A="第{:}次".format(i+1)
-                # 語法
-                # doc_ref = db.collection("集合名稱").document("文件id")
-                doc_ref = db.collection("fb").document(A)
-                # doc_ref提供一個set的方法，input必須是dictionary
-                doc_ref.set(doc)
+                users_ref.set({
+                    A: {
+                        'sum1':i+1,
+                        'name': self.save1[i-self.sumi_2_1],
+                        'SCoin': self.save2[i-self.sumi_2_1],
+                        'time':self.save3[i-self.sumi_2_1]}
+                })
+                
             self.sumi_2_1=self.sumi_2     
         elif self.tit =="QR":
+            users_ref = db.reference('/QR')
             for i in range(self.sumi_3_1,self.sumi_3):
-                doc = {
-                    'sum1':i+1,
-                    'name': self.save1[i-self.sumi_3_1],
-                    'SCoin':self.save2[i-self.sumi_3_1],
-                    'time':self.save3[i-self.sumi_3_1]
-                }
                 if i<9:
                     A="第0{:}次".format(i+1)
                 else:
                     A="第{:}次".format(i+1)
-                # 語法
-                # doc_ref = db.collection("集合名稱").document("文件id")
-                doc_ref = db.collection("QR").document(A)
-                # doc_ref提供一個set的方法，input必須是dictionary
-                doc_ref.set(doc)
+                users_ref.set({
+                    A: {
+                        'sum1':i+1,
+                        'name': self.save1[i-self.sumi_3_1],
+                        'SCoin':self.save2[i-self.sumi_3_1],
+                        'time':self.save3[i-self.sumi_3_1]}
+                })
+                
             self.sumi_3_1=self.sumi_3
     
     def ButSAVE(self):
@@ -994,8 +974,6 @@ class MyApp(object):
         L=['',self.win_main.photo_L紙類,self.win_main.photo_L塑膠類,self.win_main.photo_L鐵鋁罐] 
         sc=['',self.win_main.photo_SC紙類,self.win_main.photo_SC塑膠類,self.win_main.photo_SC鐵鋁罐]
 
-        #im=['',self.win_main.im01,self.win_main.im02,self.win_main.im03,self.win_main.im04,self.win_main.im05,
-        #    self.win_main.im06,self.win_main.im07,self.win_main.im08,self.win_main.im09,self.win_main.im10]
         im=['',self.win_main.im01,self.win_main.im02,self.win_main.im03]
         
 
@@ -1153,15 +1131,7 @@ class MyApp(object):
         self.win_main.im01=tk.PhotoImage(file=r"./image/test1.png")
         self.win_main.im02=tk.PhotoImage(file=r"./image/test2.png")
         self.win_main.im03=tk.PhotoImage(file=r"./image/test3.png")
-        '''
-        self.win_main.im04=tk.PhotoImage(file=r"./test4.png")
-        self.win_main.im05=tk.PhotoImage(file=r"./test5.png")
-        self.win_main.im06=tk.PhotoImage(file=r"./test6.png")
-        self.win_main.im07=tk.PhotoImage(file=r"./test7.png")
-        self.win_main.im08=tk.PhotoImage(file=r"./test8.png")
-        self.win_main.im09=tk.PhotoImage(file=r"./test9.png")
-        self.win_main.im10=tk.PhotoImage(file=r"./test10.png")
-        '''
+
         self.canvas_width = 800
         self.canvas_height =530
         self.canvas = tk.Canvas(self.win_main, 
@@ -1263,72 +1233,29 @@ if __name__ == "__main__":
         'uid': 'seaturtle-105103308'
     }
 })
-
-    # 初始化firestore
-#    db = firestore.client()
     
     win = tk.Tk()
 #    win.attributes("-fullscreen", True)
     win.geometry("800x470")
     app = MyApp(win)
-
-    #更新資料筆數(QR)
-    doc_ref = db.collection("Google")
-    docs = doc_ref.get()
-    print("docs=",docs)
-    app.sumi_1=0
-    i=0
-    for doc in docs:
-        app.sumi_1+=1
-        app.save4.append(doc.to_dict())
-        if app.save4[i]['name']=="紙":
-            app.countError_紙類+=1
-        elif app.save4[i]['name']=="塑膠":
-            app.countError_塑膠類+=1
-        elif app.save4[i]['name']=="鐵":
-            app.countError_鐵類+=1
-        i+=1    
-    app.sumi_1_1=app.sumi_1 
     
-
-    #更新資料筆數(QR)
-    doc_ref = db.collection("fb")
-    docs = doc_ref.get()
-    print("docs=",docs)
-    app.sumi_2=0
-    i=0
-    for doc in docs:
-        app.sumi_2+=1
-        app.save4.append(doc.to_dict())
-        if app.save4[i]['name']=="紙":
-            app.countError_紙類+=1
-        elif app.save4[i]['name']=="塑膠":
-            app.countError_塑膠類+=1
-        elif app.save4[i]['name']=="鐵":
-            app.countError_鐵類+=1
-        i+=1    
-    app.sumi_2_1=app.sumi_2 
-
-    #更新資料筆數(QR)
-    doc_ref = db.collection("QR")
-    docs = doc_ref.get()
-    print("docs=",docs)
-    app.sumi_3=0
-    cc=0
-    for doc in docs:
-        app.sumi_3+=1
-        app.save4.append(doc.to_dict())
-        if app.save4[cc]['name']=="紙":
-            app.countError_紙類+=1
-        elif app.save4[cc]['name']=="塑膠":
-            app.countError_塑膠類+=1
-        elif app.save4[cc]['name']=="鐵":
-            app.countError_鐵類+=1
-        cc+=1    
-    app.sumi_3_1=app.sumi_3   
-    print("countError_鐵類",app.countError_鐵類)
-    print("countError_塑膠",app.countError_塑膠類)
-    print("countError_紙",app.countError_紙類)
+    users_ref = db.reference('/Google')
+#
+#    users_ref.set({
+#            '第一次': {
+#            'Scoin': '100',
+#            'name': '塑膠類',
+#            'sum1': '1',
+#            'time': '2019-06-14 10:29:16'
+#            },
+#            '第二次': {
+#            'Scoin': '1',
+#            'name': '紙類',
+#            'sum1': '2',
+#            'time': '2019-08-14 10:29:16'
+#            }
+#    })
+    print(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
