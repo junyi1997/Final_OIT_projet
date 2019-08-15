@@ -465,12 +465,12 @@ class MyApp(object):
             self.save4.append(users_ref.get())
             self.sumi_2=len(users_ref.get())
             self.sumi_2_1=self.sumi_2    
-            for i in range(0,self.sumi_2):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin']) 
-                self.money+=self.saveK4[i]
+#            for i in range(0,self.sumi_2):
+#                self.saveK1.append(self.save4[i]['sum1'])
+#                self.saveK2.append(self.save4[i]['time'])
+#                self.saveK3.append(self.save4[i]['name'])
+#                self.saveK4.append(self.save4[i]['SCoin']) 
+#                self.money+=self.saveK4[i]
             win_FB.destroy()
             self.hide()
             self.tit='fb'
@@ -509,12 +509,12 @@ class MyApp(object):
             self.sumi_1_1=self.sumi_1    
             print("save4=",self.save4)
             print("sumi_1=",self.sumi_1)
-            for i in range(0,self.sumi_1):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])
-                self.money+=self.saveK4[i]
+#            for i in range(0,self.sumi_1):
+#                self.saveK1.append(self.save4[i]['sum1'])
+#                self.saveK2.append(self.save4[i]['time'])
+#                self.saveK3.append(self.save4[i]['name'])
+#                self.saveK4.append(self.save4[i]['SCoin'])
+#                self.money+=self.saveK4[i]
             win_Google.destroy()
             self.hide()
             self.tit='Google'
@@ -551,12 +551,12 @@ class MyApp(object):
             self.sumi_3=len(users_ref.get())
             self.sumi_3_1=self.sumi_3    
             
-            for i in range(0,self.sumi_3):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])   
-                self.money+=self.saveK4[i]
+#            for i in range(0,self.sumi_3):
+#                self.saveK1.append(self.save4[i]['sum1'])
+#                self.saveK2.append(self.save4[i]['time'])
+#                self.saveK3.append(self.save4[i]['name'])
+#                self.saveK4.append(self.save4[i]['SCoin'])   
+#                self.money+=self.saveK4[i]
             win_QR.destroy()
             self.hide()
             self.tit='QR'
@@ -619,12 +619,11 @@ class MyApp(object):
                     A="第0{:}次".format(i+1)
                 else:
                     A="第{:}次".format(i+1)
-                users_ref.set({
-                    A: {
+                users_ref.child(A).set({
                         'sum1':i+1,
                         'name': self.save1[i-self.sumi_1_1],
                         'SCoin': self.save2[i-self.sumi_1_1],
-                        'time':self.save3[i-self.sumi_1_1]}
+                        'time':self.save3[i-self.sumi_1_1]
                 })
                 
             self.sumi_1_1=self.sumi_1 
@@ -635,12 +634,11 @@ class MyApp(object):
                     A="第0{:}次".format(i+1)
                 else:
                     A="第{:}次".format(i+1)
-                users_ref.set({
-                    A: {
+                users_ref.child(A).set({
                         'sum1':i+1,
                         'name': self.save1[i-self.sumi_2_1],
                         'SCoin': self.save2[i-self.sumi_2_1],
-                        'time':self.save3[i-self.sumi_2_1]}
+                        'time':self.save3[i-self.sumi_2_1]
                 })
                 
             self.sumi_2_1=self.sumi_2     
@@ -651,12 +649,11 @@ class MyApp(object):
                     A="第0{:}次".format(i+1)
                 else:
                     A="第{:}次".format(i+1)
-                users_ref.set({
-                    A: {
+                users_ref.child(A).set({
                         'sum1':i+1,
                         'name': self.save1[i-self.sumi_3_1],
                         'SCoin':self.save2[i-self.sumi_3_1],
-                        'time':self.save3[i-self.sumi_3_1]}
+                        'time':self.save3[i-self.sumi_3_1]
                 })
                 
             self.sumi_3_1=self.sumi_3
