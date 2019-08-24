@@ -466,10 +466,14 @@ class MyApp(object):
             self.sumi_2=len(users_ref.get())
             self.sumi_2_1=self.sumi_2    
             for i in range(0,self.sumi_2):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin']) 
+                if i<9:
+                    A='第0{:}次'.format(i+1)
+                else:
+                    A='第{:}次'.format(i+1)
+                self.saveK1.append(self.save4[A]['sum1'])
+                self.saveK2.append(self.save4[A]['time'])
+                self.saveK3.append(self.save4[A]['name'])
+                self.saveK4.append(self.save4[A]['SCoin']) 
                 self.money+=self.saveK4[i]
             win_FB.destroy()
             self.hide()
@@ -510,10 +514,14 @@ class MyApp(object):
             print("save4=",self.save4)
             print("sumi_1=",self.sumi_1)
             for i in range(0,self.sumi_1):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])
+                if i<9:
+                    A='第0{:}次'.format(i+1)
+                else:
+                    A='第{:}次'.format(i+1)
+                self.saveK1.append(self.save4[A]['sum1'])
+                self.saveK2.append(self.save4[A]['time'])
+                self.saveK3.append(self.save4[A]['name'])
+                self.saveK4.append(self.save4[A]['SCoin'])
                 self.money+=self.saveK4[i]
             win_Google.destroy()
             self.hide()
@@ -552,10 +560,14 @@ class MyApp(object):
             self.sumi_3_1=self.sumi_3    
             
             for i in range(0,self.sumi_3):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])   
+                if i<9:
+                    A='第0{:}次'.format(i+1)
+                else:
+                    A='第{:}次'.format(i+1)
+                self.saveK1.append(self.save4[A]['sum1'])
+                self.saveK2.append(self.save4[A]['time'])
+                self.saveK3.append(self.save4[A]['name'])
+                self.saveK4.append(self.save4[A]['SCoin'])   
                 self.money+=self.saveK4[i]
             win_QR.destroy()
             self.hide()
