@@ -22,7 +22,10 @@ from firebase_admin import db
 from threading import Thread
 #引用語音說明
 import BotSpeak
+import chenfTensorflow01 as CTF
+import RPi.GPIO as GPIO
 ########################################################################
+
 class MyApp(object):
     """"""
     #----------------------------------------------------------------------
@@ -461,29 +464,29 @@ class MyApp(object):
             self.money=0
             self.sumi_2=0
             #Get Collection
-            users_ref = db.reference('/fb')
-            self.save4.append(users_ref.get())
-            self.sumi_2=len(users_ref.get())
-            self.sumi_2_1=self.sumi_2    
-<<<<<<< HEAD
-            for i in range(0,self.sumi_2):
-                if i<9:
-                    A='第0{:}次'.format(i+1)
-                else:
-                    A='第{:}次'.format(i+1)
-                self.saveK1.append(self.save4[A]['sum1'])
-                self.saveK2.append(self.save4[A]['time'])
-                self.saveK3.append(self.save4[A]['name'])
-                self.saveK4.append(self.save4[A]['SCoin']) 
-                self.money+=self.saveK4[i]
-=======
+#            users_ref = db.reference('/fb')
+#            self.save4.append(users_ref.get())
+#            self.sumi_2=len(users_ref.get())
+#            self.sumi_2_1=self.sumi_2    
+
+#            for i in range(0,self.sumi_2):
+#                if i<9:
+#                    A='第0{:}次'.format(i+1)
+#                else:
+#                    A='第{:}次'.format(i+1)
+#                self.saveK1.append(self.save4[A]['sum1'])
+#                self.saveK2.append(self.save4[A]['time'])
+#                self.saveK3.append(self.save4[A]['name'])
+#                self.saveK4.append(self.save4[A]['SCoin']) 
+#                self.money+=self.saveK4[i]
+
 #            for i in range(0,self.sumi_2):
 #                self.saveK1.append(self.save4[i]['sum1'])
 #                self.saveK2.append(self.save4[i]['time'])
 #                self.saveK3.append(self.save4[i]['name'])
 #                self.saveK4.append(self.save4[i]['SCoin']) 
 #                self.money+=self.saveK4[i]
->>>>>>> 9522fd3e1435ca7dd4ca55c4e2b94e8c1f64234a
+
             win_FB.destroy()
             self.hide()
             self.tit='fb'
@@ -515,32 +518,7 @@ class MyApp(object):
         def bt_OK():
             self.sumi_1=0
             self.money=0
-            #Get Collection
-            users_ref = db.reference('/Google')
-            self.save4.append(users_ref.get())
-            self.sumi_1=len(users_ref.get())
-            self.sumi_1_1=self.sumi_1    
-            print("save4=",self.save4)
-            print("sumi_1=",self.sumi_1)
-<<<<<<< HEAD
-            for i in range(0,self.sumi_1):
-                if i<9:
-                    A='第0{:}次'.format(i+1)
-                else:
-                    A='第{:}次'.format(i+1)
-                self.saveK1.append(self.save4[A]['sum1'])
-                self.saveK2.append(self.save4[A]['time'])
-                self.saveK3.append(self.save4[A]['name'])
-                self.saveK4.append(self.save4[A]['SCoin'])
-                self.money+=self.saveK4[i]
-=======
-#            for i in range(0,self.sumi_1):
-#                self.saveK1.append(self.save4[i]['sum1'])
-#                self.saveK2.append(self.save4[i]['time'])
-#                self.saveK3.append(self.save4[i]['name'])
-#                self.saveK4.append(self.save4[i]['SCoin'])
-#                self.money+=self.saveK4[i]
->>>>>>> 9522fd3e1435ca7dd4ca55c4e2b94e8c1f64234a
+
             win_Google.destroy()
             self.hide()
             self.tit='Google'
@@ -571,31 +549,7 @@ class MyApp(object):
         def bt_OK():
             self.sumi_3=0
             self.money=0
-            #Get Collection
-            users_ref = db.reference('/QR')
-            self.save4.append(users_ref.get())
-            self.sumi_3=len(users_ref.get())
-            self.sumi_3_1=self.sumi_3    
-            
-<<<<<<< HEAD
-            for i in range(0,self.sumi_3):
-                if i<9:
-                    A='第0{:}次'.format(i+1)
-                else:
-                    A='第{:}次'.format(i+1)
-                self.saveK1.append(self.save4[A]['sum1'])
-                self.saveK2.append(self.save4[A]['time'])
-                self.saveK3.append(self.save4[A]['name'])
-                self.saveK4.append(self.save4[A]['SCoin'])   
-                self.money+=self.saveK4[i]
-=======
-#            for i in range(0,self.sumi_3):
-#                self.saveK1.append(self.save4[i]['sum1'])
-#                self.saveK2.append(self.save4[i]['time'])
-#                self.saveK3.append(self.save4[i]['name'])
-#                self.saveK4.append(self.save4[i]['SCoin'])   
-#                self.money+=self.saveK4[i]
->>>>>>> 9522fd3e1435ca7dd4ca55c4e2b94e8c1f64234a
+
             win_QR.destroy()
             self.hide()
             self.tit='QR'
@@ -621,6 +575,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def ButEXIT(self):
         """"""
+#        GPIO.output(self.GUI_IN,GPIO.LOW)
         win_EXIT = tk.Toplevel()
         win_EXIT.geometry("250x130+270+180")
         win_EXIT.title('清單選擇')
@@ -1116,6 +1071,8 @@ class MyApp(object):
     def openFrame1(self):
 
         """"""
+        Thread(target=CTF.main,args=("",)).start()
+#        GPIO.output(self.GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
 #        self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
@@ -1269,7 +1226,9 @@ if __name__ == "__main__":
         'uid': 'seaturtle-105103308'
     }
 })
-    
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(GUI_IN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     win = tk.Tk()
 #    win.attributes("-fullscreen", True)
     win.geometry("800x470")
