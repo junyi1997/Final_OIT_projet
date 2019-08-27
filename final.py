@@ -575,7 +575,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def ButEXIT(self):
         """"""
-#        GPIO.output(self.GUI_IN,GPIO.LOW)
+        GPIO.output(self.GUI_IN,GPIO.LOW)
         win_EXIT = tk.Toplevel()
         win_EXIT.geometry("250x130+270+180")
         win_EXIT.title('清單選擇')
@@ -1072,9 +1072,9 @@ class MyApp(object):
 
         """"""
         Thread(target=CTF.main,args=("",)).start()
-#        GPIO.output(self.GUI_IN,GPIO.HIGH)
+        GPIO.output(self.GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
-#        self.win_main.attributes("-fullscreen", True)
+        self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
         self.win_main.title(self.tit)
         self.win_main.fb=tk.PhotoImage(file=r"./image/FB.png")
@@ -1230,7 +1230,7 @@ if __name__ == "__main__":
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(GUI_IN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     win = tk.Tk()
-#    win.attributes("-fullscreen", True)
+    win.attributes("-fullscreen", True)
     win.geometry("800x470")
     app = MyApp(win)
     
