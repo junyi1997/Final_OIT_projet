@@ -18,7 +18,7 @@ from urllib.parse import quote
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 from threading import Thread
 
 ########################################################################
@@ -72,13 +72,13 @@ class MyApp(object):
         self.GUI_a=0
         self.GUI_b=0
         self.GUI_c=0
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.GUI_IN, GPIO.OUT)
-        GPIO.setup(self.GUI_紙類, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.GUI_塑膠, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.GUI_鐵, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.output(self.GUI_IN,GPIO.LOW)
+#        GPIO.setwarnings(False)
+#        GPIO.setmode(GPIO.BOARD)
+#        GPIO.setup(self.GUI_IN, GPIO.OUT)
+#        GPIO.setup(self.GUI_紙類, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#        GPIO.setup(self.GUI_塑膠, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#        GPIO.setup(self.GUI_鐵, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#        GPIO.output(self.GUI_IN,GPIO.LOW)
 
         """Constructor"""
         self.win = parent
@@ -608,7 +608,7 @@ class MyApp(object):
         win_EXIT.title('清單選擇')
         def bt_OK():
             print("out")
-            GPIO.output(self.GUI_IN,GPIO.LOW)
+#            GPIO.output(self.GUI_IN,GPIO.LOW)
             self.B=0
             self.clear()
             win_EXIT.destroy()
@@ -720,7 +720,7 @@ class MyApp(object):
         """"""
         self.hide()
         win_HOW = tk.Toplevel()
-        win_HOW.attributes("-fullscreen", True)
+#        win_HOW.attributes("-fullscreen", True)
         win_HOW.geometry("800x470")
         win_HOW.title("使用說明")
         win_HOW.photo_background=tk.PhotoImage(file=r"./image/人機_說明頁面.png")
@@ -742,7 +742,7 @@ class MyApp(object):
         """"""
         self.hide()
         win_L = tk.Toplevel()
-        win_L.attributes("-fullscreen", True)
+#        win_L.attributes("-fullscreen", True)
         win_L.geometry("800x470")
         win_L.title("紀錄查詢")
         win_L.photo_background=tk.PhotoImage(file=r"./image/海龜.png")
@@ -1100,19 +1100,19 @@ class MyApp(object):
    
     #----------------------------------------------------------------------
     def openFrame1(self):
-        print("in",GPIO.input(self.GUI_IN))
-        GPIO.output(self.GUI_IN,GPIO.HIGH)
+#        print("in",GPIO.input(self.GUI_IN))
+#        GPIO.output(self.GUI_IN,GPIO.HIGH)
         time.sleep(1)
-        print("self.GUI_IN",GPIO.input(self.GUI_IN))
+#        print("self.GUI_IN",GPIO.input(self.GUI_IN))
         self.B=1
         """"""
         def gte_GPIO(): 
             while True:
                 if self.B==1:
                     print("Start")
-                    self.GUI_a=GPIO.input(self.GUI_紙類)
-                    self.GUI_b=GPIO.input(self.GUI_塑膠)
-                    self.GUI_c=GPIO.input(self.GUI_鐵)
+#                    self.GUI_a=GPIO.input(self.GUI_紙類)
+#                    self.GUI_b=GPIO.input(self.GUI_塑膠)
+#                    self.GUI_c=GPIO.input(self.GUI_鐵)
                     print("紙類",self.GUI_a,"塑膠",self.GUI_b,"鐵",self.GUI_c)
                     time.sleep(1)
                     if self.GUI_a ==1:
@@ -1130,8 +1130,8 @@ class MyApp(object):
                 else:
                     print("END")        
         self.win_main = tk.Toplevel()
-        Thread(target=gte_GPIO).start()
-        self.win_main.attributes("-fullscreen", True)
+#        Thread(target=gte_GPIO).start()
+#        self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
         self.win_main.title(self.tit)
         self.win_main.fb=tk.PhotoImage(file=r"./image/FB.png")
@@ -1288,7 +1288,7 @@ if __name__ == "__main__":
     db = firestore.client()
     
     win = tk.Tk()
-    win.attributes("-fullscreen", True)
+#    win.attributes("-fullscreen", True)
     win.geometry("800x470")
     app = MyApp(win)
 
