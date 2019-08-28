@@ -19,7 +19,7 @@ def sort_trash(imgpath):
 
 	# statusThread = ui.start_status_shower_thread()
     while True:
-        GUI_a=GPIO.input(GUI_IN)
+        GUI_a=GPIO.input(8)
         print("self.GUI_a",GUI_a)
         print("等待回應")
 		# wait for camera to detect motion, then sleep for a bit to
@@ -79,5 +79,5 @@ if __name__ == '__main__':
     GUI_IN=8#馬達IN1
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(GUI_IN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(8, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     main()
