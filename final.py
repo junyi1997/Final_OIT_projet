@@ -22,8 +22,78 @@ from firebase_admin import db
 from threading import Thread
 #引用語音說明
 import BotSpeak
-import chenfTensorflow as CTF
 import RPi.GPIO as GPIO
+#chenfTensorflow01.py code
+from ImageProcessing.camera import Camera
+from vision import Classifier
+from ImageProcessing import motiondetector
+import time 
+import brain
+# from databasehelper import Database
+import os
+from DC_motor import motor
+def sort_trash(imgpath):
+    camera = Camera()
+    m=motor()
+	# database = Database()
+    classifier = Classifier(os.path.abspath('Tf_classifier/trained_graph.pb'), os.path.abspath('Tf_classifier/output_labels.txt'))
+
+	# statusThread = ui.start_status_shower_thread()
+    while True:
+        GUI_a=GPIO.input(8)
+
+		# wait for camera to detect motion, then sleep for a bit to
+		# let the object settle down
+        if GUI_a ==1:
+
+            print ("waiting for motion...")
+            C=motiondetector.waitForMotionDetection(camera.getPiCamera())
+            time.sleep(0.5) # Lets object settle down, TODO maybe remove
+            print("C=",C)
+            
+            if C != "close":   
+                print ("detected motion")
+                
+        		# take a photo and classify it
+                camera.takePhoto(imgpath)
+                labels = classifier.get_image_labels(imgpath)
+                print (labels)
+                selectedLabel = brain.getRecyclingLabel(labels)
+                is_trash = selectedLabel == None
+        
+                if is_trash:
+                    print("It's trash.")
+                    m.my_DC()
+                    time.sleep(1)
+                else:
+                    print("It's recyclable.")
+                    if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
+                        print("It's plastic or glass.")
+                        m.motor_2()
+                        time.sleep(2)
+                        m.my_DC()
+                        time.sleep(1)
+                        m.motor_1()
+                        time.sleep(1)
+                        Trash="plastic or glass"
+                        return  Trash
+                    elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
+                        print("It's paper.")
+                        m.motor_3()
+                        time.sleep(2)
+                        m.my_DC()
+                        time.sleep(1)
+                        m.motor_1()
+                        time.sleep(1)
+
+                    elif str(selectedLabel).find('metal') != -1:
+                        print("It's metal.")
+                        time.sleep(1)
+                        m.my_DC()
+                        time.sleep(1)
+
+            else:
+                time.sleep(5)
 ########################################################################
 
 class MyApp(object):
@@ -1085,28 +1155,6 @@ class MyApp(object):
     def openFrame1(self):
 
         """"""
-        def gte_GPIO(): 
-            while True:
-                if self.B==1:
-                    print("Start")
-                    self.GUI_a=GPIO.input(self.GUI_紙類)
-                    self.GUI_b=GPIO.input(self.GUI_塑膠)
-                    self.GUI_c=GPIO.input(self.GUI_鐵)
-                    print("紙類",self.GUI_a,"塑膠",self.GUI_b,"鐵",self.GUI_c)
-                    time.sleep(1)
-                    if self.GUI_a ==1:
-                        time.sleep(2)
-                        bt_紙1()
-                        print("是紙類")
-                    elif self.GUI_b ==1:
-                        time.sleep(2)
-                        bt_塑膠1()
-                        print("是塑膠類")
-                    elif self.GUI_c ==1:
-                        time.sleep(2)
-                        bt_鐵1()
-                        print("是鐵類")  
-        Thread(target=gte_GPIO).start()                
         GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
@@ -1289,6 +1337,6 @@ if __name__ == "__main__":
 #    })
     print(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
-    Thread(target=CTF.main).start()
+    sort_trash('ImageProcessing/img/classificationImage.jpg')
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
