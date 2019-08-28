@@ -20,8 +20,7 @@ def sort_trash(imgpath):
 	# statusThread = ui.start_status_shower_thread()
     while True:
         GUI_a=GPIO.input(8)
-        print("self.GUI_a",GUI_a)
-        print("等待回應")
+
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
         if GUI_a ==1:
@@ -45,6 +44,8 @@ def sort_trash(imgpath):
                     print("It's trash.")
                     m.my_DC()
                     time.sleep(1)
+                    Trash="trash"
+                    return  Trash
                 else:
                     print("It's recyclable.")
                     if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
@@ -55,6 +56,8 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
+                        Trash="plastic or glass"
+                        return  Trash
                     elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
                         print("It's paper.")
                         m.motor_3()
@@ -63,11 +66,15 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
+                        Trash="paper"
+                        return  Trash
                     elif str(selectedLabel).find('metal') != -1:
                         print("It's metal.")
                         time.sleep(1)
                         m.my_DC()
                         time.sleep(1)
+                        Trash="metal"
+                        return  Trash
             else:
                 time.sleep(5)
 def main():
