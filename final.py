@@ -1071,7 +1071,8 @@ class MyApp(object):
     def openFrame1(self):
 
         """"""
-        Thread(target=CTF.main).start()
+        Trash=Thread(target=CTF.main).start()
+        print("Trash",Trash)
         GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
