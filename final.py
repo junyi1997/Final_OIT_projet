@@ -30,6 +30,7 @@ class MyApp(object):
     """"""
     #----------------------------------------------------------------------
     def __init__(self, parent):
+        self.Trash=Thread(target=CTF.main).start()
         '''定義變數'''
         self.sum=0#顯示總金額(最下面)
         self.i=0#表格內容
@@ -1071,8 +1072,8 @@ class MyApp(object):
     def openFrame1(self):
 
         """"""
-        Trash=Thread(target=CTF.main).start()
-        print("Trash",Trash)
+        
+        print("Trash",self.Trash)
         GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
@@ -1134,7 +1135,7 @@ class MyApp(object):
         self.canvas.pack()
         self.顯示()
         def bt_OK():
-            print("Trash",Trash)
+            print("Trash",self.Trash)
             print("save3=",self.save3)
             print("save2=",self.save2)
             print("save1=",self.save1)
