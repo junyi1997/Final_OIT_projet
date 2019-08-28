@@ -80,4 +80,7 @@ if __name__ == '__main__':
     i=0
     GUI_a=0
     GUI_IN=8#馬達IN1
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(GUI_IN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     main()
