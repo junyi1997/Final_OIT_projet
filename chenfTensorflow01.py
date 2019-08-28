@@ -25,10 +25,7 @@ def sort_trash(imgpath):
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
         if GUI_a ==1:
-            print("self.GUI_a",GUI_a)
-            print("等待回應")
-    		# wait for camera to detect motion, then sleep for a bit to
-    		# let the object settle down
+
             print ("waiting for motion...")
             C=motiondetector.waitForMotionDetection(camera.getPiCamera())
             time.sleep(0.5) # Lets object settle down, TODO maybe remove
