@@ -575,7 +575,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def ButEXIT(self):
         """"""
-        GPIO.output(self.GUI_IN,GPIO.LOW)
+        GPIO.output(GUI_IN,GPIO.LOW)
         win_EXIT = tk.Toplevel()
         win_EXIT.geometry("250x130+270+180")
         win_EXIT.title('清單選擇')
@@ -1072,7 +1072,7 @@ class MyApp(object):
 
         """"""
         Thread(target=CTF.main).start()
-        GPIO.output(self.GUI_IN,GPIO.HIGH)
+        GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
