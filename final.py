@@ -65,7 +65,7 @@ def sort_trash(imgpath):
                     print("It's trash.")
                     m.my_DC()
                     time.sleep(1)
-                else:
+                else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
                     print("It's recyclable.")
                     if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
                         print("It's plastic or glass.")
@@ -75,8 +75,7 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
-                        Trash="plastic or glass"
-                        return  Trash
+                        app.bt_塑膠1
                     elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
                         print("It's paper.")
                         m.motor_3()
@@ -85,12 +84,13 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
-
+                        app.bt_紙1
                     elif str(selectedLabel).find('metal') != -1:
                         print("It's metal.")
                         time.sleep(1)
                         m.my_DC()
                         time.sleep(1)
+                        app.bt_鐵1
 
             else:
                 time.sleep(5)
@@ -1239,7 +1239,6 @@ class MyApp(object):
         self.canvas.pack()
         self.顯示()
         def bt_OK():
-            print("Trash",self.Trash)
             print("save3=",self.save3)
             print("save2=",self.save2)
             print("save1=",self.save1)
@@ -1253,7 +1252,7 @@ class MyApp(object):
         btn_ok = tk.Button(self.win_main, text="離開/儲存",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command =bt_OK)#,command=handler)
         btn_ok.place(x=650,y=100)
 
-        #測試功能按鈕
+        #測試功能按鈕    
         btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_塑膠1)
         btn_塑膠.place(x=10,y=100)
         btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_紙1)
