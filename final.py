@@ -103,7 +103,7 @@ def sort_trash(imgpath):
                         thread1.join()
 
             else:
-                time.sleep(5)
+                time.sleep(5)#合併END
 ########################################################################
 
 class MyApp(object):
