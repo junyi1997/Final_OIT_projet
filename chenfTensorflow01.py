@@ -44,8 +44,6 @@ def sort_trash(imgpath):
                     print("It's trash.")
                     m.my_DC()
                     time.sleep(1)
-                    Trash="trash"
-                    return  Trash
                 else:
                     print("It's recyclable.")
                     if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
@@ -66,15 +64,13 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
-                        Trash="paper"
-                        return  Trash
+
                     elif str(selectedLabel).find('metal') != -1:
                         print("It's metal.")
                         time.sleep(1)
                         m.my_DC()
                         time.sleep(1)
-                        Trash="metal"
-                        return  Trash
+
             else:
                 time.sleep(5)
 def main():

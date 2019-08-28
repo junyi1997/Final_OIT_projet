@@ -1337,6 +1337,6 @@ if __name__ == "__main__":
 #    })
     print(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
-    sort_trash('ImageProcessing/img/classificationImage.jpg')
+    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
