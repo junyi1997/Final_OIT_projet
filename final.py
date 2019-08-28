@@ -1142,15 +1142,38 @@ class MyApp(object):
     def BOT(self,speaker):
         BotSpeak.speak(speaker)
     
-    def Trash_s(self):
-        if self.Trash=="trash":
-            print("trash")
-        elif self.Trash=="plastic or glass":
-            print("plastic or glass")
-        elif self.Trash=="paper":
-            print("paper")
-        elif self.Trash=="metal":
-            print("metal")
+
+    
+    def bt_塑膠1(self):
+        Thread(target=app.BOT,args =("這是塑膠類",)).start()
+        print("countError_塑膠類",self.countError_塑膠類)
+        if self.countError_塑膠類<10:
+            self.bt_塑膠()
+            self.顯示()
+        else:
+            self.countError_塑膠類=10
+            print("塑膠類滿了")
+            self.IFTTT("塑膠類")
+    def bt_紙1(self):
+        Thread(target=app.BOT,args =("這是紙類",)).start()
+        print("countError_紙類",self.countError_紙類)
+        if self.countError_紙類<10:
+            self.bt_紙()
+            self.顯示()
+        else:
+            self.countError_紙類=10
+            print("紙類滿了")
+            self.IFTTT("紙膠類")
+    def bt_鐵1(self):
+        Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
+        print("countError_鐵類",self.countError_鐵類)
+        if self.countError_鐵類<10:
+            self.bt_鐵()
+            self.顯示()
+        else:
+            self.countError_鐵類=10
+            print("鐵類滿了")
+            self.IFTTT("鐵類")
     #-----------------------------------------------------------------------
     def openFrame1(self):
 
@@ -1231,43 +1254,11 @@ class MyApp(object):
         btn_ok.place(x=650,y=100)
 
         #測試功能按鈕
-        
-        def bt_塑膠1():
-            Thread(target=app.BOT,args =("這是塑膠類",)).start()
-            print("countError_塑膠類",self.countError_塑膠類)
-            if self.countError_塑膠類<10:
-                self.bt_塑膠()
-                self.顯示()
-            else:
-                self.countError_塑膠類=10
-                print("塑膠類滿了")
-                self.IFTTT("塑膠類")
-        def bt_紙1():
-            Thread(target=app.BOT,args =("這是紙類",)).start()
-            print("countError_紙類",self.countError_紙類)
-            if self.countError_紙類<10:
-                self.bt_紙()
-                self.顯示()
-            else:
-                self.countError_紙類=10
-                print("紙類滿了")
-                self.IFTTT("紙膠類")
-        def bt_鐵1():
-            Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
-            print("countError_鐵類",self.countError_鐵類)
-            if self.countError_鐵類<10:
-                self.bt_鐵()
-                self.顯示()
-            else:
-                self.countError_鐵類=10
-                print("鐵類滿了")
-                self.IFTTT("鐵類")
-
-        btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=bt_塑膠1)
+        btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_塑膠1)
         btn_塑膠.place(x=10,y=100)
-        btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=bt_紙1)
+        btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_紙1)
         btn_紙.place(x=10,y=200)
-        btn_鐵 = tk.Button(self.win_main, text="鐵",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=bt_鐵1)
+        btn_鐵 = tk.Button(self.win_main, text="鐵",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_鐵1)
         btn_鐵.place(x=10,y=300)
         
         #右上登入圖
