@@ -1074,6 +1074,14 @@ class MyApp(object):
         """"""
         
         print("Trash",self.Trash)
+        if self.Trash=="trash":
+            print("trash")
+        elif self.Trash=="plastic or glass":
+            print("plastic or glass")
+        elif self.Trash=="paper":
+            print("paper")
+        elif self.Trash=="metal":
+            print("metal")   
         GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
