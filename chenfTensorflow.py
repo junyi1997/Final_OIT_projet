@@ -23,7 +23,7 @@ def sort_trash(imgpath):
 
     while True:
         
-        GUI_a=GPIO.input(GUI_IN)
+        GUI_a=GPIO.input(8)
         print("self.GUI_a",GUI_a)
         print("等待回應")
 		# wait for camera to detect motion, then sleep for a bit to
