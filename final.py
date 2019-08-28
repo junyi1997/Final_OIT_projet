@@ -23,87 +23,87 @@ from threading import Thread
 import threading
 #引用語音說明
 import BotSpeak
-import RPi.GPIO as GPIO
-#chenfTensorflow01.py code
-from ImageProcessing.camera import Camera
-from vision import Classifier
-from ImageProcessing import motiondetector
-import time 
-import brain
-# from databasehelper import Database
-import os
-from DC_motor import motor
-def sort_trash(imgpath):
-    camera = Camera()
-    m=motor()
-	# database = Database()
-    classifier = Classifier(os.path.abspath('Tf_classifier/trained_graph.pb'), os.path.abspath('Tf_classifier/output_labels.txt'))
-
-	# statusThread = ui.start_status_shower_thread()
-    while True:
-        GUI_a=GPIO.input(8)
-
-		# wait for camera to detect motion, then sleep for a bit to
-		# let the object settle down
-        if GUI_a ==1:
-
-            print ("waiting for motion...")
-            C=motiondetector.waitForMotionDetection(camera.getPiCamera())
-            time.sleep(0.5) # Lets object settle down, TODO maybe remove
-            print("C=",C)
-            
-            if C != "close":   
-                print ("detected motion")
-                
-        		# take a photo and classify it
-                camera.takePhoto(imgpath)
-                labels = classifier.get_image_labels(imgpath)
-                print (labels)
-                selectedLabel = brain.getRecyclingLabel(labels)
-                is_trash = selectedLabel == None
-        
-                if is_trash:
-                    print("It's trash.")
-                    m.my_DC()
-                    time.sleep(1)
-                else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
-                    print("It's recyclable.")
-                    if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
-                        print("It's plastic or glass.")
-                        m.motor_2()
-                        time.sleep(2)
-                        m.my_DC()
-                        time.sleep(1)
-                        m.motor_1()
-                        time.sleep(1)
-                        thread1 = threading.Thread(target=app.bt_塑膠1)
-                        thread1.start()
-                        thread1.join()
-                        
-                    elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
-                        print("It's paper.")
-                        m.motor_3()
-                        time.sleep(2)
-                        m.my_DC()
-                        time.sleep(1)
-                        m.motor_1()
-                        time.sleep(1)
-                        thread1 = threading.Thread(target=app.bt_紙1)
-                        thread1.start()
-                        thread1.join()
-                        
-                    elif str(selectedLabel).find('metal') != -1:
-                        print("It's metal.")
-                        time.sleep(1)
-                        m.my_DC()
-                        time.sleep(1)
-                        
-                        thread1 = threading.Thread(target=app.bt_鐵1)
-                        thread1.start()
-                        thread1.join()
-
-            else:
-                time.sleep(5)#合併END
+#import RPi.GPIO as GPIO
+##chenfTensorflow01.py code
+#from ImageProcessing.camera import Camera
+#from vision import Classifier
+#from ImageProcessing import motiondetector
+#import time 
+#import brain
+## from databasehelper import Database
+#import os
+#from DC_motor import motor
+#def sort_trash(imgpath):
+#    camera = Camera()
+#    m=motor()
+#	# database = Database()
+#    classifier = Classifier(os.path.abspath('Tf_classifier/trained_graph.pb'), os.path.abspath('Tf_classifier/output_labels.txt'))
+#
+#	# statusThread = ui.start_status_shower_thread()
+#    while True:
+#        GUI_a=GPIO.input(8)
+#
+#		# wait for camera to detect motion, then sleep for a bit to
+#		# let the object settle down
+#        if GUI_a ==1:
+#
+#            print ("waiting for motion...")
+#            C=motiondetector.waitForMotionDetection(camera.getPiCamera())
+#            time.sleep(0.5) # Lets object settle down, TODO maybe remove
+#            print("C=",C)
+#            
+#            if C != "close":   
+#                print ("detected motion")
+#                
+#        		# take a photo and classify it
+#                camera.takePhoto(imgpath)
+#                labels = classifier.get_image_labels(imgpath)
+#                print (labels)
+#                selectedLabel = brain.getRecyclingLabel(labels)
+#                is_trash = selectedLabel == None
+#        
+#                if is_trash:
+#                    print("It's trash.")
+#                    m.my_DC()
+#                    time.sleep(1)
+#                else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
+#                    print("It's recyclable.")
+#                    if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
+#                        print("It's plastic or glass.")
+#                        m.motor_2()
+#                        time.sleep(2)
+#                        m.my_DC()
+#                        time.sleep(1)
+#                        m.motor_1()
+#                        time.sleep(1)
+#                        thread1 = threading.Thread(target=app.bt_塑膠1)
+#                        thread1.start()
+#                        thread1.join()
+#                        
+#                    elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
+#                        print("It's paper.")
+#                        m.motor_3()
+#                        time.sleep(2)
+#                        m.my_DC()
+#                        time.sleep(1)
+#                        m.motor_1()
+#                        time.sleep(1)
+#                        thread1 = threading.Thread(target=app.bt_紙1)
+#                        thread1.start()
+#                        thread1.join()
+#                        
+#                    elif str(selectedLabel).find('metal') != -1:
+#                        print("It's metal.")
+#                        time.sleep(1)
+#                        m.my_DC()
+#                        time.sleep(1)
+#                        
+#                        thread1 = threading.Thread(target=app.bt_鐵1)
+#                        thread1.start()
+#                        thread1.join()
+#
+#            else:
+#                time.sleep(5)#合併END
 ########################################################################
 
 class MyApp(object):
@@ -129,7 +129,7 @@ class MyApp(object):
         self.sum2_1=0#顯示總分類項(紙)
         self.sum2_2=0#顯示總分類項(塑膠)
         self.sum2_3=0#顯示總分類項(鐵)
-
+        self.clear_step=0
         self.sumi_1=0#紀錄filebase資料比數(Google)
         self.sumi_1_1=0#紀錄上一筆filebase資料比數(Google)
         self.sumi_2=0#紀錄filebase資料比數(fb)
@@ -211,54 +211,16 @@ class MyApp(object):
         #背景
         canvas.create_image(130,10, image=win_ch.bg06)
         def print_selection():
-            Ans=tk.messagebox.askyesno(title='小提醒', message='你是否選擇要清除' + var.get()+"的資料庫？")
+            Ans=tk.messagebox.askyesno(title='小提醒', message='你是否已清空' + var.get()+"的分類桶？")
             if Ans:
-                if var.get()=='Google':
-                    l.config(text='清除Google資料')
-                    #手動刪除資料庫
-                    C=max(self.sumi_1,self.sumi_2,self.sumi_3)
-                    print("C=",C)
-                    for i in range(C):
-                        if i<9:
-                            A="第0{:}次".format(i+1)
-                        else:
-                            A="第{:}次".format(i+1)
-                        doc_ref = db.collection("Google").document(A)
-                        doc_ref.delete()
-
-                elif var.get()=='fb':
-                    l.config(text='清除fb資料')
-                    #手動刪除資料庫
-                    C=max(self.sumi_1,self.sumi_2,self.sumi_3)
-                    print("C=",C)
-                    for i in range(C):
-                        if i<9:
-                            A="第0{:}次".format(i+1)
-                        else:
-                            A="第{:}次".format(i+1)
-                        doc_ref = db.collection("fb").document(A)
-                        doc_ref.delete()
-                            
-                elif var.get()=='QRcode':
-                    l.config(text='清除QRcode資料')
-                    #手動刪除資料庫
-                    C=max(self.sumi_1,self.sumi_2,self.sumi_3)
-                    print("C=",C)
-                    for i in range(C):
-                        if i<9:
-                            A="第0{:}次".format(i+1)
-                        else:
-                            A="第{:}次".format(i+1)
-                        doc_ref = db.collection("QRcode").document(A)
-                        doc_ref.delete()
-                tk.messagebox.showinfo( "小提醒", "資料已刪除完畢")
-                #222222222222222222222222222
-                self.countError_塑膠類=0
-                self.countError_鐵類=0
-                self.countError_紙類=0
+                if var.get()=='鐵鋁罐':
+                    self.countError_鐵類=0
+                elif var.get()=='塑膠+玻璃':
+                    self.countError_塑膠類=0        
+                elif var.get()=='紙類+厚紙板':
+                    self.countError_紙類=0
                 cleardata = tk.messagebox.askyesno('Welcome',
                                     '是否要離開本頁面？')
-
                 if cleardata:
                     win_ch.destroy()        
         def chpwd():
@@ -269,18 +231,18 @@ class MyApp(object):
         l.place(x=10, y=10)
         btn_chpw = tk.Button(win_ch, text='更改密碼', bg='orange',font= ('Noto Sans Mono CJK TC Regular',20),command=chpwd)
         btn_chpw.place(x=250, y=100)
-        r1 = tk.Radiobutton(win_ch, text='Google',
-                            variable=var, value='Google',font= ('Noto Sans Mono CJK TC Regular',16),
+        r1 = tk.Radiobutton(win_ch, text='鐵鋁罐',
+                            variable=var, value='鐵鋁罐',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r1.place(x=50, y=70)
 
-        r2 = tk.Radiobutton(win_ch, text='Facebook',
-                            variable=var, value='fb',font= ('Noto Sans Mono CJK TC Regular',16),
+        r2 = tk.Radiobutton(win_ch, text='塑膠+玻璃',
+                            variable=var, value='塑膠+玻璃',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r2.place(x=50, y=130)
 
-        r3 = tk.Radiobutton(win_ch, text='QRcode',
-                            variable=var, value='QRcode',font= ('Noto Sans Mono CJK TC Regular',16),
+        r3 = tk.Radiobutton(win_ch, text='紙類+厚紙板',
+                            variable=var, value='紙類+厚紙板',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r3.place(x=50, y=190)
 
@@ -547,30 +509,6 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.sumi_2=0
-            #Get Collection
-#            users_ref = db.reference('/fb')
-#            self.save4.append(users_ref.get())
-#            self.sumi_2=len(users_ref.get())
-#            self.sumi_2_1=self.sumi_2    
-
-#            for i in range(0,self.sumi_2):
-#                if i<9:
-#                    A='第0{:}次'.format(i+1)
-#                else:
-#                    A='第{:}次'.format(i+1)
-#                self.saveK1.append(self.save4[A]['sum1'])
-#                self.saveK2.append(self.save4[A]['time'])
-#                self.saveK3.append(self.save4[A]['name'])
-#                self.saveK4.append(self.save4[A]['SCoin']) 
-#                self.money+=self.saveK4[i]
-
-#            for i in range(0,self.sumi_2):
-#                self.saveK1.append(self.save4[i]['sum1'])
-#                self.saveK2.append(self.save4[i]['time'])
-#                self.saveK3.append(self.save4[i]['name'])
-#                self.saveK4.append(self.save4[i]['SCoin']) 
-#                self.money+=self.saveK4[i]
-
             win_FB.destroy()
             self.hide()
             self.tit='fb'
@@ -659,7 +597,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def ButEXIT(self):
         """"""
-        GPIO.output(GUI_IN,GPIO.LOW)
+#        GPIO.output(GUI_IN,GPIO.LOW)
         win_EXIT = tk.Toplevel()
         win_EXIT.geometry("250x130+270+180")
         win_EXIT.title('清單選擇')
@@ -672,7 +610,7 @@ class MyApp(object):
             self.show()
         def bt_NO():
             win_EXIT.destroy() 
-            self.ButSAVE()
+#            self.ButSAVE()
         win_EXIT.bg04=tk.PhotoImage(file=r"./image/bg04.png")
         canvas_width = 250
         canvas_height =130
@@ -692,6 +630,7 @@ class MyApp(object):
     def BtnSaveData(self):
         if self.tit == "Google":
             users_ref = db.reference('/Google')
+            
             for i in range(self.sumi_1_1,self.sumi_1):
                 if i<9:
                     A="第0{:}次".format(i+1)
@@ -699,14 +638,15 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[i-self.sumi_1_1],
-                        'SCoin': self.save2[i-self.sumi_1_1],
-                        'time':self.save3[i-self.sumi_1_1]
+                        'name': self.save1[self.sumi_1_1],
+                        'SCoin': self.save2[self.sumi_1_1],
+                        'time':self.save3[self.sumi_1_1]
                 })
-                
-            self.sumi_1_1=self.sumi_1 
+            self.sumi_1_1=self.sumi_1
+
         elif self.tit == "fb":
             users_ref = db.reference('/fb')
+            
             for i in range(self.sumi_2_1,self.sumi_2):
                 if i<9:
                     A="第0{:}次".format(i+1)
@@ -714,14 +654,15 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[i-self.sumi_2_1],
-                        'SCoin': self.save2[i-self.sumi_2_1],
-                        'time':self.save3[i-self.sumi_2_1]
+                        'name': self.save1[self.sumi_2_1],
+                        'SCoin': self.save2[self.sumi_2_1],
+                        'time':self.save3[self.sumi_2_1]
                 })
                 
             self.sumi_2_1=self.sumi_2     
         elif self.tit =="QR":
             users_ref = db.reference('/QR')
+            
             for i in range(self.sumi_3_1,self.sumi_3):
                 if i<9:
                     A="第0{:}次".format(i+1)
@@ -729,9 +670,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[i-self.sumi_3_1],
-                        'SCoin':self.save2[i-self.sumi_3_1],
-                        'time':self.save3[i-self.sumi_3_1]
+                        'name': self.save1[self.sumi_3_1],
+                        'SCoin':self.save2[self.sumi_3_1],
+                        'time':self.save3[self.sumi_3_1]
                 })
                 
             self.sumi_3_1=self.sumi_3
@@ -871,23 +812,32 @@ class MyApp(object):
         self.saveK2.clear()
         self.saveK3.clear()
         self.saveK4.clear()
+        
+        ############################################################################################################
         if self.tit == "Google":
             self.sumi_1=0
             #Get Collection
-            doc_ref = db.collection(self.tit)
-            docs = doc_ref.get()
-            print("docs=",docs)
-            for doc in docs:
-                self.sumi_1+=1
-                self.save4.append(doc.to_dict())
-            self.sumi_1_1=self.sumi_1    
-            print("save4=",self.save4)
-            print("sumi_1=",self.sumi_1)
-            for i in range(0,self.sumi_1):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])
+            over=1 
+            i=0
+            while over:
+                if i<10:
+                    A="{:}/第0{:}次".format(self.tit,i+1)
+                else:
+                    A="{:}/第{:}次".format(self.tit,i+1) 
+                i=i+1
+                ref = db.reference(A)
+                print(ref)
+                data = ref.get()
+                if(data!=None): 
+                    over=1
+                    self.sumi_1=len(data)+1
+                    print("self.sumi_1",self.sumi_1)
+                    self.saveK1.append(data['sum1'])
+                    self.saveK2.append(data['time'])
+                    self.saveK3.append(data['name'])
+                    self.saveK4.append(data['SCoin'])
+                else:
+                    over=0
                   
         ##############################################################################
             for c in range(self.sumi_1):
@@ -896,19 +846,26 @@ class MyApp(object):
         elif self.tit == "fb":
             self.sumi_2=0
             #Get Collection
-            doc_ref = db.collection(self.tit)
-            docs = doc_ref.get()
-            print("docs=",docs)
-            for doc in docs:
-                self.sumi_2+=1
-                self.save4.append(doc.to_dict())
-            self.sumi_2_1=self.sumi_2    
-            
-            for i in range(0,self.sumi_2):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])  
+            over=1 
+            i=0
+            while over:
+                if i<10:
+                    A="{:}/第0{:}次".format(self.tit,i+1)
+                else:
+                    A="{:}/第{:}次".format(self.tit,i+1) 
+                i=i+1
+                ref = db.reference(A)
+                print(ref)
+                data = ref.get()
+                if(data!=None): 
+                    over=1
+                    self.sumi_2=len(data)+1
+                    self.saveK1.append(data['sum1'])
+                    self.saveK2.append(data['time'])
+                    self.saveK3.append(data['name'])
+                    self.saveK4.append(data['SCoin'])
+                else:
+                    over=0  
                    
         ##############################################################################
             for c in range(self.sumi_2):
@@ -917,19 +874,26 @@ class MyApp(object):
         elif self.tit =="QR":
             self.sumi_3=0
             #Get Collection
-            doc_ref = db.collection(self.tit)
-            docs = doc_ref.get()
-            print("docs=",docs)
-            for doc in docs:
-                self.sumi_3+=1
-                self.save4.append(doc.to_dict())
-            self.sumi_3_1=self.sumi_3    
-           
-            for i in range(0,self.sumi_3):
-                self.saveK1.append(self.save4[i]['sum1'])
-                self.saveK2.append(self.save4[i]['time'])
-                self.saveK3.append(self.save4[i]['name'])
-                self.saveK4.append(self.save4[i]['SCoin'])  
+            over=1 
+            i=0
+            while over:
+                if i<10:
+                    A="{:}/第0{:}次".format(self.tit,i+1)
+                else:
+                    A="{:}/第{:}次".format(self.tit,i+1) 
+                i=i+1
+                ref = db.reference(A)
+                print(ref)
+                data = ref.get()
+                if(data!=None): 
+                    over=1
+                    self.sumi_3=len(data)+1
+                    self.saveK1.append(data['sum1'])
+                    self.saveK2.append(data['time'])
+                    self.saveK3.append(data['name'])
+                    self.saveK4.append(data['SCoin'])
+                else:
+                    over=0  
                          
         ##############################################################################
             for c in range(self.sumi_3):
@@ -1026,6 +990,7 @@ class MyApp(object):
         self.save2.clear()#紀錄投入物件名稱(代碼)
         self.save3.clear()#紀錄投入物件當下時間
         self.顯示()
+        self.clear_step=1
 
         
 #######################################################################################################        
@@ -1038,7 +1003,8 @@ class MyApp(object):
         # 290
         self.sum=self.money
         self.i+=self.sum1
-        self.BtnSaveData()
+        if(self.clear_step==0):self.BtnSaveData()
+        self.clear_ste=0
         num=[self.win_main.photo_0,self.win_main.photo_1,self.win_main.photo_2,self.win_main.photo_3,self.win_main.photo_4,self.win_main.photo_5,
         self.win_main.photo_6,self.win_main.photo_7,self.win_main.photo_8,self.win_main.photo_9,self.win_main.photo_10,
         self.win_main.photo_11,self.win_main.photo_12,self.win_main.photo_13,self.win_main.photo_14,self.win_main.photo_15,
@@ -1188,9 +1154,9 @@ class MyApp(object):
     def openFrame1(self):
 
         """"""
-        GPIO.output(GUI_IN,GPIO.HIGH)
+#        GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
-        self.win_main.attributes("-fullscreen", True)
+#        self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
         self.win_main.title(self.tit)
         self.win_main.fb=tk.PhotoImage(file=r"./image/FB.png")
@@ -1308,35 +1274,18 @@ if __name__ == "__main__":
     'databaseURL': 'https://seaturtle-105103308.firebaseio.com/',
     'databaseAuthVariableOverride': {
         'uid': 'seaturtle-105103308'
-    }
-})
+    }})
+    
     GUI_IN=8#馬達IN1
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(GUI_IN, GPIO.OUT)
+#    GPIO.setwarnings(False)
+#    GPIO.setmode(GPIO.BOARD)
+#    GPIO.setup(GUI_IN, GPIO.OUT)
     win = tk.Tk()
-    win.attributes("-fullscreen", True)
+#    win.attributes("-fullscreen", True)
     win.geometry("800x470")
     app = MyApp(win)
     
-    users_ref = db.reference('/Google')
-#
-#    users_ref.set({
-#            '第一次': {
-#            'Scoin': '100',
-#            'name': '塑膠類',
-#            'sum1': '1',
-#            'time': '2019-06-14 10:29:16'
-#            },
-#            '第二次': {
-#            'Scoin': '1',
-#            'name': '紙類',
-#            'sum1': '2',
-#            'time': '2019-08-14 10:29:16'
-#            }
-#    })
-    print(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
-    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
+#    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
