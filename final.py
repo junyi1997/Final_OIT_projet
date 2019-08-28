@@ -20,6 +20,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 #threading引用必要套件
 from threading import Thread
+import threading
 #引用語音說明
 import BotSpeak
 import RPi.GPIO as GPIO
@@ -75,7 +76,10 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
-                        app.bt_塑膠1
+                        thread1 = threading.Thread(target=app.bt_塑膠1)
+                        thread1.start()
+                        thread1.join()
+                        
                     elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
                         print("It's paper.")
                         m.motor_3()
@@ -84,13 +88,19 @@ def sort_trash(imgpath):
                         time.sleep(1)
                         m.motor_1()
                         time.sleep(1)
-                        app.bt_紙1
+                        thread1 = threading.Thread(target=app.bt_紙1)
+                        thread1.start()
+                        thread1.join()
+                        
                     elif str(selectedLabel).find('metal') != -1:
                         print("It's metal.")
                         time.sleep(1)
                         m.my_DC()
                         time.sleep(1)
-                        app.bt_鐵1
+                        
+                        thread1 = threading.Thread(target=app.bt_鐵1)
+                        thread1.start()
+                        thread1.join()
 
             else:
                 time.sleep(5)
