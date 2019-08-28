@@ -1134,6 +1134,7 @@ class MyApp(object):
         self.canvas.pack()
         self.顯示()
         def bt_OK():
+            print("Trash",Trash)
             print("save3=",self.save3)
             print("save2=",self.save2)
             print("save1=",self.save1)
