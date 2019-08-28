@@ -22,7 +22,7 @@ from firebase_admin import db
 from threading import Thread
 #引用語音說明
 import BotSpeak
-import chenfTensorflow01 as CTF
+import chenfTensorflow as CTF
 import RPi.GPIO as GPIO
 ########################################################################
 
@@ -30,7 +30,7 @@ class MyApp(object):
     """"""
     #----------------------------------------------------------------------
     def __init__(self, parent):
-        self.Trash=Thread(target=CTF.main).start()
+        
         '''定義變數'''
         self.sum=0#顯示總金額(最下面)
         self.i=0#表格內容
@@ -70,6 +70,9 @@ class MyApp(object):
         self.saveK4=[]#紀錄表格數據
         self.list1=[]
         self.speak=""
+        self.GUI_紙類=26#馬達IN2 藍
+        self.GUI_塑膠=24#馬達IN3 黑
+        self.GUI_鐵=13#馬達IN4   白
 
         """Constructor"""
         self.win = parent
@@ -1068,12 +1071,8 @@ class MyApp(object):
         
     def BOT(self,speaker):
         BotSpeak.speak(speaker)
-    #----------------------------------------------------------------------
-    def openFrame1(self):
-
-        """"""
-        
-        print("Trash",self.Trash)
+    
+    def Trash_s(self):
         if self.Trash=="trash":
             print("trash")
         elif self.Trash=="plastic or glass":
@@ -1081,7 +1080,33 @@ class MyApp(object):
         elif self.Trash=="paper":
             print("paper")
         elif self.Trash=="metal":
-            print("metal")   
+            print("metal")
+    #-----------------------------------------------------------------------
+    def openFrame1(self):
+
+        """"""
+        def gte_GPIO(): 
+            while True:
+                if self.B==1:
+                    print("Start")
+                    self.GUI_a=GPIO.input(self.GUI_紙類)
+                    self.GUI_b=GPIO.input(self.GUI_塑膠)
+                    self.GUI_c=GPIO.input(self.GUI_鐵)
+                    print("紙類",self.GUI_a,"塑膠",self.GUI_b,"鐵",self.GUI_c)
+                    time.sleep(1)
+                    if self.GUI_a ==1:
+                        time.sleep(2)
+                        bt_紙1()
+                        print("是紙類")
+                    elif self.GUI_b ==1:
+                        time.sleep(2)
+                        bt_塑膠1()
+                        print("是塑膠類")
+                    elif self.GUI_c ==1:
+                        time.sleep(2)
+                        bt_鐵1()
+                        print("是鐵類")  
+        Thread(target=gte_GPIO).start()                
         GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
@@ -1264,5 +1289,6 @@ if __name__ == "__main__":
 #    })
     print(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
+    Thread(target=CTF.main).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
