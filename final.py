@@ -1289,6 +1289,6 @@ if __name__ == "__main__":
     app = MyApp(win)
     
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
-#    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
+    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
