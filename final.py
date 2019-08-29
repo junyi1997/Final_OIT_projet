@@ -23,87 +23,88 @@ from threading import Thread
 import threading
 #引用語音說明
 import BotSpeak
-#import RPi.GPIO as GPIO
-##chenfTensorflow01.py code
-#from ImageProcessing.camera import Camera
-#from vision import Classifier
-#from ImageProcessing import motiondetector
-#import time 
-#import brain
-## from databasehelper import Database
-#import os
-#from DC_motor import motor
-#def sort_trash(imgpath):
-#    camera = Camera()
-#    m=motor()
-#	# database = Database()
-#    classifier = Classifier(os.path.abspath('Tf_classifier/trained_graph.pb'), os.path.abspath('Tf_classifier/output_labels.txt'))
-#
-#	# statusThread = ui.start_status_shower_thread()
-#    while True:
-#        GUI_a=GPIO.input(8)
-#
-#		# wait for camera to detect motion, then sleep for a bit to
-#		# let the object settle down
-#        if GUI_a ==1:
-#
-#            print ("waiting for motion...")
-#            C=motiondetector.waitForMotionDetection(camera.getPiCamera())
-#            time.sleep(0.5) # Lets object settle down, TODO maybe remove
-#            print("C=",C)
-#            
-#            if C != "close":   
-#                print ("detected motion")
-#                
-#        		# take a photo and classify it
-#                camera.takePhoto(imgpath)
-#                labels = classifier.get_image_labels(imgpath)
-#                print (labels)
-#                selectedLabel = brain.getRecyclingLabel(labels)
-#                is_trash = selectedLabel == None
-#        
-#                if is_trash:
-#                    print("It's trash.")
-#                    m.my_DC()
-#                    time.sleep(1)
-#                else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
-#                    print("It's recyclable.")
-#                    if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
-#                        print("It's plastic or glass.")
-#                        m.motor_2()
-#                        time.sleep(2)
-#                        m.my_DC()
-#                        time.sleep(1)
-#                        m.motor_1()
-#                        time.sleep(1)
-#                        thread1 = threading.Thread(target=app.bt_塑膠1)
-#                        thread1.start()
-#                        thread1.join()
-#                        
-#                    elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
-#                        print("It's paper.")
-#                        m.motor_3()
-#                        time.sleep(2)
-#                        m.my_DC()
-#                        time.sleep(1)
-#                        m.motor_1()
-#                        time.sleep(1)
-#                        thread1 = threading.Thread(target=app.bt_紙1)
-#                        thread1.start()
-#                        thread1.join()
-#                        
-#                    elif str(selectedLabel).find('metal') != -1:
-#                        print("It's metal.")
-#                        time.sleep(1)
-#                        m.my_DC()
-#                        time.sleep(1)
-#                        
-#                        thread1 = threading.Thread(target=app.bt_鐵1)
-#                        thread1.start()
-#                        thread1.join()
-#
-#            else:
-#                time.sleep(5)#合併END
+import RPi.GPIO as GPIO
+#chenfTensorflow01.py code
+from ImageProcessing.camera import Camera
+from vision import Classifier
+from ImageProcessing import motiondetector
+import time 
+import brain
+# from databasehelper import Database
+import os
+from DC_motor import motor
+def sort_trash(imgpath):
+    camera = Camera()
+    m=motor()
+	# database = Database()
+    classifier = Classifier(os.path.abspath('Tf_classifier/trained_graph.pb'), os.path.abspath('Tf_classifier/output_labels.txt'))
+
+	# statusThread = ui.start_status_shower_thread()
+    while True:
+        GUI_a=GPIO.input(8)
+
+		# wait for camera to detect motion, then sleep for a bit to
+		# let the object settle down
+        if GUI_a ==1:
+
+            print ("waiting for motion...")
+            Thread(target=app.BOT,args =("請開始投入垃圾",)).start()
+            C=motiondetector.waitForMotionDetection(camera.getPiCamera())
+            time.sleep(0.5) # Lets object settle down, TODO maybe remove
+            print("C=",C)
+            
+            if C != "close":   
+                print ("detected motion")
+                
+        		# take a photo and classify it
+                camera.takePhoto(imgpath)
+                labels = classifier.get_image_labels(imgpath)
+                print (labels)
+                selectedLabel = brain.getRecyclingLabel(labels)
+                is_trash = selectedLabel == None
+        
+                if is_trash:
+                    print("It's trash.")
+                    m.my_DC()
+                    time.sleep(1)
+                else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
+                    print("It's recyclable.")
+                    if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
+                        print("It's plastic or glass.")
+                        m.motor_2()
+                        time.sleep(2)
+                        m.my_DC()
+                        time.sleep(1)
+                        m.motor_1()
+                        time.sleep(1)
+                        thread1 = threading.Thread(target=app.bt_塑膠1)
+                        thread1.start()
+                        thread1.join()
+                        
+                    elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
+                        print("It's paper.")
+                        m.motor_3()
+                        time.sleep(2)
+                        m.my_DC()
+                        time.sleep(1)
+                        m.motor_1()
+                        time.sleep(1)
+                        thread1 = threading.Thread(target=app.bt_紙1)
+                        thread1.start()
+                        thread1.join()
+                        
+                    elif str(selectedLabel).find('metal') != -1:
+                        print("It's metal.")
+                        time.sleep(1)
+                        m.my_DC()
+                        time.sleep(1)
+                        
+                        thread1 = threading.Thread(target=app.bt_鐵1)
+                        thread1.start()
+                        thread1.join()
+
+            else:
+                time.sleep(5)#合併END
 ########################################################################
 
 class MyApp(object):
@@ -597,11 +598,12 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def ButEXIT(self):
         """"""
-#        GPIO.output(GUI_IN,GPIO.LOW)
+        GPIO.output(GUI_IN,GPIO.LOW)
         win_EXIT = tk.Toplevel()
         win_EXIT.geometry("250x130+270+180")
         win_EXIT.title('清單選擇')
         def bt_OK():
+            Thread(target=app.BOT,args =("掰掰",)).start()
             print("out")
             self.B=0
             self.clear()
@@ -714,7 +716,7 @@ class MyApp(object):
         self.hide()
         win_HOW = tk.Toplevel()
         Thread(target=app.BOT,args =("歡迎來到說明頁面如需語音說明擇點選右上方喇叭按鈕開始",)).start()
-#        win_HOW.attributes("-fullscreen", True)
+        win_HOW.attributes("-fullscreen", True)
         win_HOW.geometry("800x470")
         win_HOW.title("使用說明")
         win_HOW.photo_background=tk.PhotoImage(file=r"./image/人機_說明頁面.png")
@@ -736,7 +738,7 @@ class MyApp(object):
         """"""
         self.hide()
         win_L = tk.Toplevel()
-#        win_L.attributes("-fullscreen", True)
+        win_L.attributes("-fullscreen", True)
         win_L.geometry("800x470")
         win_L.title("紀錄查詢")
         win_L.photo_background=tk.PhotoImage(file=r"./image/海龜.png")
@@ -1154,9 +1156,10 @@ class MyApp(object):
     def openFrame1(self):
 
         """"""
-#        GPIO.output(GUI_IN,GPIO.HIGH)
+        Thread(target=app.BOT,args =("攝像頭開啟中，請稍後再投入垃圾",)).start()
+        GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
-#        self.win_main.attributes("-fullscreen", True)
+        self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
         self.win_main.title(self.tit)
         self.win_main.fb=tk.PhotoImage(file=r"./image/FB.png")
@@ -1229,12 +1232,12 @@ class MyApp(object):
         btn_ok.place(x=650,y=100)
 
         #測試功能按鈕    
-        btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_塑膠1)
-        btn_塑膠.place(x=10,y=100)
-        btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_紙1)
-        btn_紙.place(x=10,y=200)
-        btn_鐵 = tk.Button(self.win_main, text="鐵",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_鐵1)
-        btn_鐵.place(x=10,y=300)
+#        btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_塑膠1)
+#        btn_塑膠.place(x=10,y=100)
+#        btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_紙1)
+#        btn_紙.place(x=10,y=200)
+#        btn_鐵 = tk.Button(self.win_main, text="鐵",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_鐵1)
+#        btn_鐵.place(x=10,y=300)
         
         #右上登入圖
         if self.tit =='fb':
@@ -1277,11 +1280,11 @@ if __name__ == "__main__":
     }})
     
     GUI_IN=8#馬達IN1
-#    GPIO.setwarnings(False)
-#    GPIO.setmode(GPIO.BOARD)
-#    GPIO.setup(GUI_IN, GPIO.OUT)
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(GUI_IN, GPIO.OUT)
     win = tk.Tk()
-#    win.attributes("-fullscreen", True)
+    win.attributes("-fullscreen", True)
     win.geometry("800x470")
     app = MyApp(win)
     
