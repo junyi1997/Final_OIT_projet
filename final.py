@@ -25,7 +25,7 @@ import threading
 #引用語音說明
 import BotSpeak
 import RPi.GPIO as GPIO
-#chenfTensorflow01.py code
+##chenfTensorflow01.py code
 from ImageProcessing.camera import Camera
 from vision import Classifier
 from ImageProcessing import motiondetector
@@ -613,7 +613,7 @@ class MyApp(object):
             self.show()
         def bt_NO():
             win_EXIT.destroy() 
-#            self.ButSAVE()
+            self.ButSAVE()
         win_EXIT.bg04=tk.PhotoImage(file=r"./image/bg04.png")
         canvas_width = 250
         canvas_height =130
@@ -695,7 +695,7 @@ class MyApp(object):
 
         def bt_NO():
             win_EXIT.destroy() 
-
+            self.clear()
         label = tk.Label(win_EXIT, text='是否清除本頁面資料',font= ('Noto Sans Mono CJK TC Regular',20),bg='#B4C6E7')
         label.pack()
         btn_OK = tk.Button(win_EXIT, text="是",font= ('Noto Sans Mono CJK TC Regular',20),bg='#71C7D5',fg='white',command=bt_OK)
@@ -1232,7 +1232,7 @@ class MyApp(object):
         btn_ok = tk.Button(self.win_main, text="離開/儲存",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command =bt_OK)#,command=handler)
         btn_ok.place(x=650,y=100)
 
-        #測試功能按鈕    
+#        測試功能按鈕    
 #        btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_塑膠1)
 #        btn_塑膠.place(x=10,y=100)
 #        btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=self.bt_紙1)
