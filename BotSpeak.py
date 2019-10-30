@@ -25,7 +25,7 @@ def speak(text):
     bot_speak(text,'zh-tw')  # 說出text
     
 def mymain():
-    speak('我是12345678901234567890')
+    speak('1231')
 
 if __name__=="__main__":
     mymain()
