@@ -7,8 +7,8 @@ class motor:
       self.ou3_pin=35#馬達IN3
       self.ou4_pin=37#馬達IN4
       self.in1_pin=36#一般桶
-      self.in2_pin=38#紙類桶
-      self.in3_pin=40#塑膠桶
+      self.in2_pin=38#塑膠桶
+      self.in3_pin=40#紙類桶
 
       self.ouZ1_pin=32#DC馬達 pin1
       self.ouZ2_pin=29#DC馬達 pin2
