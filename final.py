@@ -24,7 +24,7 @@ from threading import Thread
 import threading
 #引用語音說明
 import BotSpeak
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 ##chenfTensorflow01.py code
 from ImageProcessing.camera import Camera
 from vision import Classifier
@@ -42,7 +42,7 @@ def sort_trash(imgpath):
 
 	# statusThread = ui.start_status_shower_thread()
     while True:
-#        GUI_a=GPIO.input(8)
+        GUI_a=GPIO.input(8)
 
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
@@ -599,7 +599,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def ButEXIT(self):
         """"""
-#        GPIO.output(GUI_IN,GPIO.LOW)
+        GPIO.output(GUI_IN,GPIO.LOW)
         win_EXIT = tk.Toplevel()
         win_EXIT.geometry("250x130+270+180")
         win_EXIT.title('清單選擇')
@@ -1158,7 +1158,7 @@ class MyApp(object):
 
         """"""
         Thread(target=app.BOT,args =("攝像頭開啟中，請稍後再投入垃圾",)).start()
-#        GPIO.output(GUI_IN,GPIO.HIGH)
+        GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
         self.win_main.geometry("800x470")
@@ -1281,9 +1281,9 @@ if __name__ == "__main__":
     }})
     
     GUI_IN=8#馬達IN1
-#    GPIO.setwarnings(False)
-#    GPIO.setmode(GPIO.BOARD)
-#    GPIO.setup(GUI_IN, GPIO.OUT)
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(GUI_IN, GPIO.OUT)
     win = tk.Tk()
     win.attributes("-fullscreen", True)
     win.geometry("800x470")
