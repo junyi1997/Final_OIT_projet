@@ -15,6 +15,8 @@ GPIO.setup(in1_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(in2_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(in3_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 while True:
-    print(GPIO.input(in1_pin))
-    print(GPIO.input(in2_pin))
-    print(GPIO.input(in3_pin))
+    print("一般桶定位狀態：{:}".format(GPIO.input(in1_pin)))
+    print("塑膠桶定位狀態：{:}".format(GPIO.input(in2_pin)))
+    print("紙類桶定位狀態：{:}".format(GPIO.input(in3_pin)))
+    print("")
+
