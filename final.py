@@ -135,9 +135,9 @@ class MyApp(object):
         self.sumi_1=0#紀錄filebase資料比數(Google)
         self.sumi_1_1=0#紀錄上一筆filebase資料比數(Google)
         self.sumi_2=0#紀錄filebase資料比數(fb)
-        self.sumi_2_1=0#紀錄上一筆filebase資料比數(Google)
+        self.sumi_2_1=0#紀錄上一筆filebase資料比數(fb)
         self.sumi_3=0#紀錄filebase資料比數(QR)
-        self.sumi_3_1=0#紀錄上一筆filebase資料比數(Google)
+        self.sumi_3_1=0#紀錄上一筆filebase資料比數(QR)
         self.countError_紙類=0#紀錄紙類垃圾桶是否已滿
         self.countError_塑膠類=0#紀錄塑膠類垃圾桶是否已滿
         self.countError_鐵類=0#紀錄鐵類垃圾桶是否已滿
@@ -511,6 +511,29 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.sumi_2=0
+            #Get Collection
+            over=1 
+            i=0
+            while over:
+                if i<10:
+                    A="{:}/第0{:}次".format(self.tit,i+1)
+                else:
+                    A="{:}/第{:}次".format(self.tit,i+1) 
+                i=i+1
+                ref = db.reference(A)
+                print(ref)
+                data = ref.get()
+                if(data!=None): 
+                    over=1
+                    self.sumi_2=len(data)+1
+                    print("self.sumi_2",self.sumi_2)
+                    self.saveK1.append(data['sum1'])
+                    self.saveK2.append(data['time'])
+                    self.saveK3.append(data['name'])
+                    self.saveK4.append(data['SCoin'])
+                    self.money+=self.saveK4[i]
+                else:
+                    over=0
             win_FB.destroy()
             self.hide()
             self.tit='fb'
@@ -540,9 +563,31 @@ class MyApp(object):
         win_Google.geometry("250x130+270+180")
         win_Google.title('登入方法')
         def bt_OK():
-            self.sumi_1=0
             self.money=0
-
+            self.sumi_1=0
+            #Get Collection
+            over=1 
+            i=0
+            while over:
+                if i<10:
+                    A="{:}/第0{:}次".format(self.tit,i+1)
+                else:
+                    A="{:}/第{:}次".format(self.tit,i+1) 
+                i=i+1
+                ref = db.reference(A)
+                print(ref)
+                data = ref.get()
+                if(data!=None): 
+                    over=1
+                    self.sumi_1=len(data)+1
+                    print("self.sumi_1",self.sumi_1)
+                    self.saveK1.append(data['sum1'])
+                    self.saveK2.append(data['time'])
+                    self.saveK3.append(data['name'])
+                    self.saveK4.append(data['SCoin'])
+                    self.money+=self.saveK4[i]
+                else:
+                    over=0
             win_Google.destroy()
             self.hide()
             self.tit='Google'
@@ -573,7 +618,29 @@ class MyApp(object):
         def bt_OK():
             self.sumi_3=0
             self.money=0
-
+            #Get Collection
+            over=1 
+            i=0
+            while over:
+                if i<10:
+                    A="{:}/第0{:}次".format(self.tit,i+1)
+                else:
+                    A="{:}/第{:}次".format(self.tit,i+1) 
+                i=i+1
+                ref = db.reference(A)
+                print(ref)
+                data = ref.get()
+                if(data!=None): 
+                    over=1
+                    self.sumi_3=len(data)+1
+                    print("self.sumi_3",self.sumi_3)
+                    self.saveK1.append(data['sum1'])
+                    self.saveK2.append(data['time'])
+                    self.saveK3.append(data['name'])
+                    self.saveK4.append(data['SCoin'])
+                    self.money+=self.saveK4[i]
+                else:
+                    over=0
             win_QR.destroy()
             self.hide()
             self.tit='QR'
@@ -1269,6 +1336,7 @@ class MyApp(object):
         self.win.deiconify()
 #----------------------------------------------------------------------
 if __name__ == "__main__":
+    app = MyApp(win)
     # 引用私密金鑰
     # path/to/serviceAccount.json 請用自己存放的路徑
     cred = credentials.Certificate('./serviceAccount.json')
@@ -1279,6 +1347,12 @@ if __name__ == "__main__":
     'databaseAuthVariableOverride': {
         'uid': 'seaturtle-105103308'
     }})
+    users_ref = db.reference('/Google')
+    app.sumi_1_1=len(users_ref.get())
+    users_ref = db.reference('/QR')
+    app.sumi_2_1=len(users_ref.get())
+    users_ref = db.reference('/fb')
+    app.sumi_3_1=len(users_ref.get())
     
     GUI_IN=8#馬達IN1
     GPIO.setwarnings(False)
@@ -1287,7 +1361,7 @@ if __name__ == "__main__":
     win = tk.Tk()
     win.attributes("-fullscreen", True)
     win.geometry("800x470")
-    app = MyApp(win)
+    
     
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
     Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
