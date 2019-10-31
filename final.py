@@ -526,12 +526,12 @@ class MyApp(object):
                 if(data!=None): 
                     over=1
                     
-                    print("fb",self.sumi_2_2)
+                    print("fb",self.sumi_2_1-1)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_2_2):
+                    for i in range(0,self.sumi_2_1-1):
                         self.money+=int(self.saveK4[i])
                 else:
                     over=0
@@ -580,12 +580,12 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    print("Google",self.sumi_2_1)
+                    print("Google",self.sumi_1_1-1)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_2_1):
+                    for i in range(0,self.sumi_1_1-1):
                         self.money+=int(self.saveK4[i])
                 else:
                     over=0
@@ -634,12 +634,12 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    print("QR",self.sumi_2_3)
+                    print("QR",self.sumi_3_1-1)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_2_3):
+                    for i in range(0,self.sumi_3_1-1):
                         self.money+=int(self.saveK4[i])
                 else:
                     over=0
