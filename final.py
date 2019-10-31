@@ -1336,7 +1336,7 @@ class MyApp(object):
         self.win.deiconify()
 #----------------------------------------------------------------------
 if __name__ == "__main__":
-    app = MyApp(win)
+    
     # 引用私密金鑰
     # path/to/serviceAccount.json 請用自己存放的路徑
     cred = credentials.Certificate('./serviceAccount.json')
@@ -1347,12 +1347,7 @@ if __name__ == "__main__":
     'databaseAuthVariableOverride': {
         'uid': 'seaturtle-105103308'
     }})
-    users_ref = db.reference('/Google')
-    app.sumi_1_1=len(users_ref.get())
-    users_ref = db.reference('/QR')
-    app.sumi_2_1=len(users_ref.get())
-    users_ref = db.reference('/fb')
-    app.sumi_3_1=len(users_ref.get())
+    
     
     GUI_IN=8#馬達IN1
     GPIO.setwarnings(False)
@@ -1362,7 +1357,13 @@ if __name__ == "__main__":
     win.attributes("-fullscreen", True)
     win.geometry("800x470")
     
-    
+    app = MyApp(win)
+    users_ref = db.reference('/Google')
+    app.sumi_1_1=len(users_ref.get())
+    users_ref = db.reference('/QR')
+    app.sumi_2_1=len(users_ref.get())
+    users_ref = db.reference('/fb')
+    app.sumi_3_1=len(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
     Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
