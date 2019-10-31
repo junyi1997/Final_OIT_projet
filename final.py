@@ -510,8 +510,6 @@ class MyApp(object):
         win_FB.title('登入方法')
         def bt_OK():
             self.money=0
-            users_ref = db.reference('/fb')
-            self.sumi_2=len(users_ref.get())
             self.tit='fb'
             #Get Collection
             over=1 
@@ -527,13 +525,13 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    self.sumi_2=len(data)+1
-                    print("self.sumi_2",self.sumi_2)
+                    
+                    print("fb",self.sumi_2_2)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_2):
+                    for i in range(0,self.sumi_2_2):
                         self.money+=int(self.saveK4[i])
                 else:
                     over=0
@@ -567,8 +565,6 @@ class MyApp(object):
         win_Google.title('登入方法')
         def bt_OK():
             self.money=0
-            users_ref = db.reference('/Google')
-            self.sumi_1=len(users_ref.get())
             self.tit='Google'
             #Get Collection
             over=1 
@@ -584,11 +580,12 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
+                    print("Google",self.sumi_2_1)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_1):
+                    for i in range(0,self.sumi_2_1):
                         self.money+=int(self.saveK4[i])
                 else:
                     over=0
@@ -621,8 +618,6 @@ class MyApp(object):
         win_QR.title('登入方法')
         
         def bt_OK():
-            users_ref = db.reference('/QR')
-            self.sumi_3=len(users_ref.get())
             self.money=0
             self.tit='QR'
             #Get Collection
@@ -639,13 +634,12 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    self.sumi_3=len(data)+1
-                    print("self.sumi_3",self.sumi_3)
+                    print("QR",self.sumi_2_3)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_3):
+                    for i in range(0,self.sumi_2_3):
                         self.money+=int(self.saveK4[i])
                 else:
                     over=0
