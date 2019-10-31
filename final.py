@@ -521,7 +521,7 @@ class MyApp(object):
                 else:
                     A="{:}/第{:}次".format(self.tit,i+1) 
                 i=i+1
-                ref = db.reference(self.tit)
+                ref = db.reference(A)
                 print(ref)
                 data = ref.get()
                 if(data!=None): 
@@ -576,7 +576,7 @@ class MyApp(object):
                 else:
                     A="{:}/第{:}次".format(self.tit,i+1) 
                 i=i+1
-                ref = db.reference(self.tit)
+                ref = db.reference(A)
                 print(ref)
                 data = ref.get()
                 if(data!=None): 
@@ -630,7 +630,7 @@ class MyApp(object):
                 else:
                     A="{:}/第{:}次".format(self.tit,i+1) 
                 i=i+1
-                ref = db.reference(self.tit)
+                ref = db.reference(A)
                 print(ref)
                 data = ref.get()
                 if(data!=None): 

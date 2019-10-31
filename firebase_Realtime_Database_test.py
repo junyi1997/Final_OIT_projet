@@ -92,8 +92,8 @@ users_ref = db.reference('/Google')
 print("Google")
 c=users_ref.get()
 print(c)
-cc=len(users_ref.get())
-print(cc)
+sumi_3_1=len(users_ref.get())
+print(sumi_3_1)
 users_ref = db.reference('/QR')
 print("QR")
 a=users_ref.get()
@@ -133,15 +133,10 @@ while over:
         over=1
         sumi_1=len(data)+1
         print("sumi_1",sumi_1)
-        saveK1.append(data['sum1'])
-        saveK2.append(data['time'])
-        saveK3.append(data['name'])
         saveK4.append(data['SCoin'])
     else:
         over=0
-#        print(saveK4)
-        
-        for i in range(0,cc):
+        for i in range(0,sumi_3_1):
             money+=int(saveK4[i])
             print(saveK4[i]) 
         print(money)      
