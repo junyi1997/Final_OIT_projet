@@ -510,7 +510,8 @@ class MyApp(object):
         win_FB.title('登入方法')
         def bt_OK():
             self.money=0
-            self.sumi_2=0
+            users_ref = db.reference('/fb')
+            self.sumi_2=len(users_ref.get())
             self.tit='fb'
             #Get Collection
             over=1 
@@ -566,7 +567,8 @@ class MyApp(object):
         win_Google.title('登入方法')
         def bt_OK():
             self.money=0
-            self.sumi_1=0
+            users_ref = db.reference('/Google')
+            self.sumi_1=len(users_ref.get())
             self.tit='Google'
             #Get Collection
             over=1 
@@ -582,8 +584,6 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    self.sumi_1=len(data)+1
-                    print("self.sumi_1",self.sumi_1)
                     self.saveK1.append(data['sum1'])
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
@@ -621,7 +621,8 @@ class MyApp(object):
         win_QR.title('登入方法')
         
         def bt_OK():
-            self.sumi_3=0
+            users_ref = db.reference('/QR')
+            self.sumi_3=len(users_ref.get())
             self.money=0
             self.tit='QR'
             #Get Collection

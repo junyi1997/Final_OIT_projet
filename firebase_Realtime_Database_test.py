@@ -88,6 +88,11 @@ users_ref.set({
 })
 
 ##データを取得する
+users_ref = db.reference('/Google')
+print("Google")
+c=users_ref.get()
+print(c)
+print(len(users_ref.get()))
 users_ref = db.reference('/QR')
 print("QR")
 a=users_ref.get()
