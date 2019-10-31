@@ -532,7 +532,8 @@ class MyApp(object):
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    self.money+=self.saveK4[i]
+                    for i in range(0,self.sumi_2):
+                        self.money+=self.saveK4[i]
                 else:
                     over=0
             win_FB.destroy()
@@ -587,7 +588,8 @@ class MyApp(object):
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    self.money+=self.saveK4[i]
+                    for i in range(0,self.sumi_1):
+                        self.money+=self.saveK4[i]
                 else:
                     over=0
             win_Google.destroy()
@@ -642,7 +644,8 @@ class MyApp(object):
                     self.saveK2.append(data['time'])
                     self.saveK3.append(data['name'])
                     self.saveK4.append(data['SCoin'])
-                    self.money+=self.saveK4[i]
+                    for i in range(0,self.sumi_3):
+                        self.money+=self.saveK4[i]
                 else:
                     over=0
             win_QR.destroy()

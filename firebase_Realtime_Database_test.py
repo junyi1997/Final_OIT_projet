@@ -36,13 +36,13 @@ users_ref = db.reference('/QR')
 
 users_ref.set({
         '第01次': {
-        'Scoin': '100',
+        'SCoin': '100',
         'name': '塑膠類',
         'sum1': '1',
         'time': '2019-06-14 10:29:16'
         },
         '第02次': {
-        'Scoin': '1',
+        'SCoin': '1',
         'name': '紙類',
         'sum1': '2',
         'time': '2019-08-14 10:29:16'
@@ -58,13 +58,13 @@ users_ref = db.reference('/fb')
 
 users_ref.set({
         '第01次': {
-        'Scoin': '100',
+        'SCoin': '100',
         'name': '塑膠類',
         'sum1': '1',
         'time': '2019-06-14 10:29:16'
         },
         '第02次': {
-        'Scoin': '1',
+        'SCoin': '1',
         'name': '紙類',
         'sum1': '2',
         'time': '2019-08-14 10:29:16'
@@ -74,13 +74,13 @@ users_ref = db.reference('/Google')
 
 users_ref.set({
         '第01次': {
-        'Scoin': '100',
+        'SCoin': '100',
         'name': '塑膠類',
         'sum1': '1',
         'time': '2019-06-14 10:29:16'
         },
         '第02次': {
-        'Scoin': '1',
+        'SCoin': '1',
         'name': '紙類',
         'sum1': '2',
         'time': '2019-08-14 10:29:16'
