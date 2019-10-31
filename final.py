@@ -142,6 +142,9 @@ class MyApp(object):
         self.countError_塑膠類=0#紀錄塑膠類垃圾桶是否已滿
         self.countError_鐵類=0#紀錄鐵類垃圾桶是否已滿
         self.sumi=0#紀錄表格次數
+        self.a=0
+        self.b=0
+        self.c=0
         self.save1=[]#紀錄投入物件名稱(中文)
         self.save2=[]#紀錄投入物件名稱(代碼)SC幣
         self.save3=[]#紀錄投入物件當下時間
@@ -531,7 +534,7 @@ class MyApp(object):
                     self.saveK4.append(data['SCoin'])
                 else:
                     over=0
-                    for i in range(0,self.sumi_2_1):
+                    for i in range(0,self.b):
                         self.money+=int(self.saveK4[i])
                         print(self.saveK4[i]) 
             win_FB.destroy()
@@ -586,7 +589,7 @@ class MyApp(object):
                     self.saveK4.append(data['SCoin'])
                 else:
                     over=0
-                    for i in range(0,self.sumi_1_1):
+                    for i in range(0,self.a):
                         self.money+=int(self.saveK4[i])
                         print(self.saveK4[i]) 
                     
@@ -640,7 +643,7 @@ class MyApp(object):
                     self.saveK4.append(data['SCoin'])
                 else:
                     over=0
-                    for i in range(0,self.sumi_3_1):
+                    for i in range(0,self.c):
                         self.money+=int(self.saveK4[i])
                         print(self.saveK4[i]) 
             win_QR.destroy()
@@ -1361,11 +1364,11 @@ if __name__ == "__main__":
     
     app = MyApp(win)
     users_ref = db.reference('/Google')
-    app.sumi_1_1=len(users_ref.get())
+    app.a=len(users_ref.get())
     users_ref = db.reference('/QR')
-    app.sumi_2_1=len(users_ref.get())
+    app.b=len(users_ref.get())
     users_ref = db.reference('/fb')
-    app.sumi_3_1=len(users_ref.get())
+    app.c=len(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
     Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
