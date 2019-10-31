@@ -511,6 +511,7 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.tit='fb'
+            self.sumi_2=0
             #Get Collection
             over=1 
             i=0
@@ -525,16 +526,14 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    
-                    print("fb",self.sumi_2_1-1)
-                    self.saveK1.append(data['sum1'])
-                    self.saveK2.append(data['time'])
-                    self.saveK3.append(data['name'])
+                    self.sumi_2=len(data)+1
+                    print("sumi_1",self.sumi_2)
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_2_1-1):
-                        self.money+=int(self.saveK4[i])
                 else:
                     over=0
+                    for i in range(0,self.sumi_2_1):
+                        self.money+=int(self.saveK4[i])
+                        print(self.saveK4[i]) 
             win_FB.destroy()
             self.hide()
             
@@ -567,6 +566,8 @@ class MyApp(object):
             self.money=0
             self.tit='Google'
             #Get Collection
+            self.sumi_1=0
+            #Get Collection
             over=1 
             i=0
             while over:
@@ -580,15 +581,15 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    print("Google",self.sumi_1_1-1)
-                    self.saveK1.append(data['sum1'])
-                    self.saveK2.append(data['time'])
-                    self.saveK3.append(data['name'])
+                    self.sumi_1=len(data)+1
+                    print("sumi_1",self.sumi_1)
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_1_1-1):
-                        self.money+=int(self.saveK4[i])
                 else:
                     over=0
+                    for i in range(0,self.sumi_1_1):
+                        self.money+=int(self.saveK4[i])
+                        print(self.saveK4[i]) 
+                    
             win_Google.destroy()
             self.hide()
             
@@ -634,15 +635,14 @@ class MyApp(object):
                 data = ref.get()
                 if(data!=None): 
                     over=1
-                    print("QR",self.sumi_3_1-1)
-                    self.saveK1.append(data['sum1'])
-                    self.saveK2.append(data['time'])
-                    self.saveK3.append(data['name'])
+                    self.sumi_3=len(data)+1
+                    print("sumi_1",self.sumi_3)
                     self.saveK4.append(data['SCoin'])
-                    for i in range(0,self.sumi_3_1-1):
-                        self.money+=int(self.saveK4[i])
                 else:
                     over=0
+                    for i in range(0,self.sumi_3_1):
+                        self.money+=int(self.saveK4[i])
+                        print(self.saveK4[i]) 
             win_QR.destroy()
             self.hide()
             
