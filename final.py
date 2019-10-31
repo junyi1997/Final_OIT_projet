@@ -516,27 +516,27 @@ class MyApp(object):
             self.tit='fb'
             self.sumi_2=0
             #Get Collection
-            over=1 
-            i=0
-            while over:
-                if i<10:
-                    A="{:}/第0{:}次".format(self.tit,i+1)
-                else:
-                    A="{:}/第{:}次".format(self.tit,i+1) 
-                i=i+1
-                ref = db.reference(A)
-                print(ref)
-                data = ref.get()
-                if(data!=None): 
-                    over=1
-                    self.sumi_2=len(data)+1
-                    print("sumi_1",self.sumi_2)
-                    self.saveK4.append(data['SCoin'])
-                else:
-                    over=0
-                    for i in range(0,self.b):
-                        self.money+=int(self.saveK4[i])
-                        print(self.saveK4[i]) 
+#            over=1 
+#            i=0
+#            while over:
+#                if i<10:
+#                    A="{:}/第0{:}次".format(self.tit,i+1)
+#                else:
+#                    A="{:}/第{:}次".format(self.tit,i+1) 
+#                i=i+1
+#                ref = db.reference(A)
+#                print(ref)
+#                data = ref.get()
+#                if(data!=None): 
+#                    over=1
+#                    self.sumi_2=len(data)+1
+#                    print("sumi_1",self.sumi_2)
+#                    self.saveK4.append(data['SCoin'])
+#                else:
+#                    over=0
+#                    for i in range(0,self.b):
+#                        self.money+=int(self.saveK4[i])
+#                        print(self.saveK4[i]) 
             win_FB.destroy()
             self.hide()
             
@@ -571,27 +571,27 @@ class MyApp(object):
             #Get Collection
             self.sumi_1=0
             #Get Collection
-            over=1 
-            i=0
-            while over:
-                if i<10:
-                    A="{:}/第0{:}次".format(self.tit,i+1)
-                else:
-                    A="{:}/第{:}次".format(self.tit,i+1) 
-                i=i+1
-                ref = db.reference(A)
-                print(ref)
-                data = ref.get()
-                if(data!=None): 
-                    over=1
-                    self.sumi_1=len(data)+1
-                    print("sumi_1",self.sumi_1)
-                    self.saveK4.append(data['SCoin'])
-                else:
-                    over=0
-                    for i in range(0,self.a):
-                        self.money+=int(self.saveK4[i])
-                        print(self.saveK4[i]) 
+#            over=1 
+#            i=0
+#            while over:
+#                if i<10:
+#                    A="{:}/第0{:}次".format(self.tit,i+1)
+#                else:
+#                    A="{:}/第{:}次".format(self.tit,i+1) 
+#                i=i+1
+#                ref = db.reference(A)
+#                print(ref)
+#                data = ref.get()
+#                if(data!=None): 
+#                    over=1
+#                    self.sumi_1=len(data)+1
+#                    print("sumi_1",self.sumi_1)
+#                    self.saveK4.append(data['SCoin'])
+#                else:
+#                    over=0
+#                    for i in range(0,self.a):
+#                        self.money+=int(self.saveK4[i])
+#                        print(self.saveK4[i]) 
                     
             win_Google.destroy()
             self.hide()
@@ -625,27 +625,27 @@ class MyApp(object):
             self.money=0
             self.tit='QR'
             #Get Collection
-            over=1 
-            i=0
-            while over:
-                if i<10:
-                    A="{:}/第0{:}次".format(self.tit,i+1)
-                else:
-                    A="{:}/第{:}次".format(self.tit,i+1) 
-                i=i+1
-                ref = db.reference(A)
-                print(ref)
-                data = ref.get()
-                if(data!=None): 
-                    over=1
-                    self.sumi_3=len(data)+1
-                    print("sumi_1",self.sumi_3)
-                    self.saveK4.append(data['SCoin'])
-                else:
-                    over=0
-                    for i in range(0,self.c):
-                        self.money+=int(self.saveK4[i])
-                        print(self.saveK4[i]) 
+#            over=1 
+#            i=0
+#            while over:
+#                if i<10:
+#                    A="{:}/第0{:}次".format(self.tit,i+1)
+#                else:
+#                    A="{:}/第{:}次".format(self.tit,i+1) 
+#                i=i+1
+#                ref = db.reference(A)
+#                print(ref)
+#                data = ref.get()
+#                if(data!=None): 
+#                    over=1
+#                    self.sumi_3=len(data)+1
+#                    print("sumi_1",self.sumi_3)
+#                    self.saveK4.append(data['SCoin'])
+#                else:
+#                    over=0
+#                    for i in range(0,self.c):
+#                        self.money+=int(self.saveK4[i])
+#                        print(self.saveK4[i]) 
             win_QR.destroy()
             self.hide()
             
