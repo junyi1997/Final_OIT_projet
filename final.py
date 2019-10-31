@@ -511,6 +511,7 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.sumi_2=0
+            self.tit='fb'
             #Get Collection
             over=1 
             i=0
@@ -536,7 +537,7 @@ class MyApp(object):
                     over=0
             win_FB.destroy()
             self.hide()
-            self.tit='fb'
+            
             self.openFrame1()
         def bt_NO():
             win_FB.destroy() 
@@ -565,6 +566,7 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.sumi_1=0
+            self.tit='Google'
             #Get Collection
             over=1 
             i=0
@@ -590,7 +592,7 @@ class MyApp(object):
                     over=0
             win_Google.destroy()
             self.hide()
-            self.tit='Google'
+            
             self.openFrame1()
         def bt_NO():
             win_Google.destroy() 
@@ -615,9 +617,11 @@ class MyApp(object):
         win_QR = tk.Toplevel()
         win_QR.geometry("250x130+270+180")
         win_QR.title('登入方法')
+        
         def bt_OK():
             self.sumi_3=0
             self.money=0
+            self.tit='QR'
             #Get Collection
             over=1 
             i=0
@@ -643,7 +647,7 @@ class MyApp(object):
                     over=0
             win_QR.destroy()
             self.hide()
-            self.tit='QR'
+            
             self.openFrame1()
         def bt_NO():
             win_QR.destroy() 
