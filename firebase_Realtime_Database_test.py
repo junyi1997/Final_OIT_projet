@@ -32,60 +32,60 @@ firebase_admin.initialize_app(cred, {
 
 # databaseにデータを追加する
 
-#users_ref = db.reference('/QR')
-#
-#users_ref.set({
-#        '第01次': {
-#        'SCoin': '100',
-#        'name': '塑膠類',
-#        'sum1': '1',
-#        'time': '2019-06-14 10:29:16'
-#        },
-#        '第02次': {
-#        'SCoin': '1',
-#        'name': '紙類',
-#        'sum1': '2',
-#        'time': '2019-08-14 10:29:16'
-#        }
-#})
-#users_ref.child('第03次').set({
-#'Scoin': '6',
-#'name': '鐵類',
-#'sum1': '3',
-#'time': '2019-08-16 10:29:16'
-#})
-#users_ref = db.reference('/fb')
-#
-#users_ref.set({
-#        '第01次': {
-#        'SCoin': '100',
-#        'name': '塑膠類',
-#        'sum1': '1',
-#        'time': '2019-06-14 10:29:16'
-#        },
-#        '第02次': {
-#        'SCoin': '1',
-#        'name': '紙類',
-#        'sum1': '2',
-#        'time': '2019-08-14 10:29:16'
-#        }
-#})
-#users_ref = db.reference('/Google')
-#
-#users_ref.set({
-#        '第01次': {
-#        'SCoin': '100',
-#        'name': '塑膠類',
-#        'sum1': '1',
-#        'time': '2019-06-14 10:29:16'
-#        },
-#        '第02次': {
-#        'SCoin': '1',
-#        'name': '紙類',
-#        'sum1': '2',
-#        'time': '2019-08-14 10:29:16'
-#        }
-#})
+users_ref = db.reference('/QR')
+
+users_ref.set({
+        '第01次': {
+        'SCoin': '1',
+        'name': '塑膠類',
+        'sum1': '1',
+        'time': '2019-06-14 10:29:16'
+        },
+        '第02次': {
+        'SCoin': '1',
+        'name': '紙類',
+        'sum1': '2',
+        'time': '2019-08-14 10:29:16'
+        }
+})
+users_ref.child('第03次').set({
+'Scoin': '6',
+'name': '鐵類',
+'sum1': '3',
+'time': '2019-08-16 10:29:16'
+})
+users_ref = db.reference('/fb')
+
+users_ref.set({
+        '第01次': {
+        'SCoin': '100',
+        'name': '塑膠類',
+        'sum1': '1',
+        'time': '2019-06-14 10:29:16'
+        },
+        '第02次': {
+        'SCoin': '1',
+        'name': '紙類',
+        'sum1': '2',
+        'time': '2019-08-14 10:29:16'
+        }
+})
+users_ref = db.reference('/Google')
+
+users_ref.set({
+        '第01次': {
+        'SCoin': '100',
+        'name': '塑膠類',
+        'sum1': '1',
+        'time': '2019-06-14 10:29:16'
+        },
+        '第02次': {
+        'SCoin': '1',
+        'name': '紙類',
+        'sum1': '2',
+        'time': '2019-08-14 10:29:16'
+        }
+})
 
 ##データを取得する
 users_ref = db.reference('/Google')

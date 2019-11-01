@@ -706,7 +706,7 @@ class MyApp(object):
         if self.tit == "Google":
             users_ref = db.reference('/Google')
             
-            for i in range(self.a,self.sumi_1):
+            for i in range(self.sumi_1_1,self.sumi_1):
                 if i<9:
                     A="第0{:}次".format(i+1)
                 else:
@@ -722,7 +722,7 @@ class MyApp(object):
         elif self.tit == "fb":
             users_ref = db.reference('/fb')
             
-            for i in range(self.b,self.sumi_2):
+            for i in range(self.sumi_2_1,self.sumi_2):
                 if i<9:
                     A="第0{:}次".format(i+1)
                 else:
@@ -738,7 +738,7 @@ class MyApp(object):
         elif self.tit =="QR":
             users_ref = db.reference('/QR')
             
-            for i in range(self.c,self.sumi_3):
+            for i in range(self.sumi_3_1,self.sumi_3):
                 if i<9:
                     A="第0{:}次".format(i+1)
                 else:
@@ -1364,11 +1364,11 @@ if __name__ == "__main__":
     
     app = MyApp(win)
     users_ref = db.reference('/Google')
-    app.a=len(users_ref.get())
+    app.sumi_1_1=len(users_ref.get())
     users_ref = db.reference('/QR')
-    app.b=len(users_ref.get())
+    app.sumi_2_1=len(users_ref.get())
     users_ref = db.reference('/fb')
-    app.c=len(users_ref.get())
+    app.sumi_3_1=len(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
     Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
