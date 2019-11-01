@@ -779,7 +779,7 @@ class MyApp(object):
     def spaekHowToUse(self):
         with open ("使用說明.txt","r",encoding="UTF-8") as fd:
             data=fd.read()
-            if self.SpeekAns:BotSpeak.speak(data)    
+            BotSpeak.speak(data)    
     #----------------------------------------------------------------------
     def openFrame(self):
         """"""
