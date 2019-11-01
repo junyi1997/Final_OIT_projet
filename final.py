@@ -514,7 +514,6 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.tit='fb'
-            self.sumi_2=0
             #Get Collection
 #            over=1 
 #            i=0
@@ -568,8 +567,7 @@ class MyApp(object):
         def bt_OK():
             self.money=0
             self.tit='Google'
-            #Get Collection
-            self.sumi_1=0
+
             #Get Collection
 #            over=1 
 #            i=0
