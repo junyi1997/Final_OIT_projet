@@ -724,6 +724,8 @@ class MyApp(object):
         win_HOW.geometry("800x470")
         win_HOW.title("使用說明")
         win_HOW.photo_background=tk.PhotoImage(file=r"./image/人機_說明頁面.png")
+        win_HOW.BZ=tk.PhotoImage(file=r"./image/bz.png")
+        
         canvas_width = 800
         canvas_height =530
         canvas = tk.Canvas(win_HOW, 
@@ -736,6 +738,8 @@ class MyApp(object):
         handler = lambda: self.onCloseOtherFrame(win_HOW)
         btn = tk.Button(win_HOW, text="continue",command=handler,font= ('Noto Sans Mono CJK TC Regular',20),fg='white',bg='Maroon',width=8)
         btn.place(x=330,y=380)
+        but_BZ=tk.Button(win_HOW,image=win_HOW.BZ) 
+        but_BZ.place(x=720,y=0,width=80,height=80)
     #----------------------------------------------------------------------
     def openFrame2(self):
         
