@@ -703,7 +703,7 @@ class MyApp(object):
         btn_ON.place(x=130,y=60,width=60,height=60)       
     #----------------------------------------------------------------------
     def BtnSaveData(self):
-        print("save1：{:}，save2：{:}，save3：{:}".format(self.save1,self.save2,self.save3))
+        print("sum1：{:}，save1：{:}，save2：{:}，save3：{:}".format(self.sum1,self.save1,self.save2,self.save3))
         if self.tit == "Google":
             users_ref = db.reference('/Google')
             
