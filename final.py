@@ -707,49 +707,49 @@ class MyApp(object):
         if self.tit == "Google":
             users_ref = db.reference('/Google')
             
-            for i in range(self.sumi_1_1,self.sumi_1):
-                if i<9:
-                    A="第0{:}次".format(i+1)
-                else:
-                    A="第{:}次".format(i+1)
-                users_ref.child(A).set({
-                        'sum1':i+1,
-                        'name': self.save1[self.sum1-1],
-                        'SCoin': self.save2[self.sum1-1],
-                        'time':self.save3[self.sum1-1]
-                })
+            i=self.sumi_1_1
+            if i<9:
+                A="第0{:}次".format(i)
+            else:
+                A="第{:}次".format(i)
+            users_ref.child(A).set({
+                    'sum1':i+1,
+                    'name': self.save1[self.sum1-1],
+                    'SCoin': self.save2[self.sum1-1],
+                    'time':self.save3[self.sum1-1]
+            })
             self.sumi_1_1=self.sumi_1
 
         elif self.tit == "fb":
             users_ref = db.reference('/fb')
             
-            for i in range(self.sumi_2_1,self.sumi_2):
-                if i<9:
-                    A="第0{:}次".format(i+1)
-                else:
-                    A="第{:}次".format(i+1)
-                users_ref.child(A).set({
-                        'sum1':i+1,
-                        'name': self.save1[self.sum1-1],
-                        'SCoin': self.save2[self.sum1-1],
-                        'time':self.save3[self.sum1-1]
-                })
+            i=self.sumi_2_1
+            if i<9:
+                A="第0{:}次".format(i)
+            else:
+                A="第{:}次".format(i)
+            users_ref.child(A).set({
+                    'sum1':i+1,
+                    'name': self.save1[self.sum1-1],
+                    'SCoin': self.save2[self.sum1-1],
+                    'time':self.save3[self.sum1-1]
+            })
                 
             self.sumi_2_1=self.sumi_2     
         elif self.tit =="QR":
             users_ref = db.reference('/QR')
             
-            for i in range(self.sumi_3_1,self.sumi_3):
-                if i<9:
-                    A="第0{:}次".format(i+1)
-                else:
-                    A="第{:}次".format(i+1)
-                users_ref.child(A).set({
-                        'sum1':i+1,
-                        'name': self.save1[self.sum1-1],
-                        'SCoin':self.save2[self.sum1-1],
-                        'time':self.save3[self.sum1-1]
-                })
+            i=self.sumi_3_1
+            if i<9:
+                A="第0{:}次".format(i)
+            else:
+                A="第{:}次".format(i)
+            users_ref.child(A).set({
+                    'sum1':i+1,
+                    'name': self.save1[self.sum1-1],
+                    'SCoin':self.save2[self.sum1-1],
+                    'time':self.save3[self.sum1-1]
+            })
                 
             self.sumi_3_1=self.sumi_3
     
