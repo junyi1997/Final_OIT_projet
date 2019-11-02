@@ -81,6 +81,7 @@ def sort_trash(imgpath):
                         thread1 = threading.Thread(target=app.bt_塑膠1)
                         thread1.start()
                         thread1.join()
+                        time.sleep(5)
                         
                     elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
                         print("It's paper.")
@@ -93,6 +94,7 @@ def sort_trash(imgpath):
                         thread1 = threading.Thread(target=app.bt_紙1)
                         thread1.start()
                         thread1.join()
+                        time.sleep(5)
                         
                     elif str(selectedLabel).find('metal') != -1:
                         print("It's metal.")
@@ -102,9 +104,10 @@ def sort_trash(imgpath):
                         thread1 = threading.Thread(target=app.bt_鐵1)
                         thread1.start()
                         thread1.join()
+                        time.sleep(5)
 
             else:
-                time.sleep(5)#合併END
+                time.sleep(10)#合併END
 ########################################################################
 
 class MyApp(object):
@@ -1199,6 +1202,7 @@ class MyApp(object):
     
     def bt_塑膠1(self):
         Thread(target=app.BOT,args =("這是塑膠類",)).start()
+        time.sleep(10)
         print("countError_塑膠類",self.countError_塑膠類)
         if self.countError_塑膠類<10:
             self.bt_塑膠()
@@ -1209,6 +1213,7 @@ class MyApp(object):
             self.IFTTT("塑膠類")
     def bt_紙1(self):
         Thread(target=app.BOT,args =("這是紙類",)).start()
+        time.sleep(10)
         print("countError_紙類",self.countError_紙類)
         if self.countError_紙類<10:
             self.bt_紙()
@@ -1219,6 +1224,7 @@ class MyApp(object):
             self.IFTTT("紙膠類")
     def bt_鐵1(self):
         Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
+        time.sleep(10)
         print("countError_鐵類",self.countError_鐵類)
         if self.countError_鐵類<10:
             self.bt_鐵()
