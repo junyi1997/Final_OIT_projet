@@ -712,12 +712,13 @@ class MyApp(object):
                 A="第0{:}次".format(i)
             else:
                 A="第{:}次".format(i)
-            users_ref.child(A).set({
-                    'sum1':i+1,
-                    'name': self.save1[self.sum1-1],
-                    'SCoin': self.save2[self.sum1-1],
-                    'time':self.save3[self.sum1-1]
-            })
+            if self.sum1>0:
+                users_ref.child(A).set({
+                        'sum1':i+1,
+                        'name': self.save1[self.sum1-1],
+                        'SCoin': self.save2[self.sum1-1],
+                        'time':self.save3[self.sum1-1]
+                })
             self.sumi_1_1=self.sumi_1
 
         elif self.tit == "fb":
@@ -728,12 +729,13 @@ class MyApp(object):
                 A="第0{:}次".format(i)
             else:
                 A="第{:}次".format(i)
-            users_ref.child(A).set({
+            if self.sum1>0:    
+                users_ref.child(A).set({
                     'sum1':i+1,
                     'name': self.save1[self.sum1-1],
                     'SCoin': self.save2[self.sum1-1],
-                    'time':self.save3[self.sum1-1]
-            })
+                   'time':self.save3[self.sum1-1]
+                })
                 
             self.sumi_2_1=self.sumi_2     
         elif self.tit =="QR":
@@ -744,12 +746,13 @@ class MyApp(object):
                 A="第0{:}次".format(i)
             else:
                 A="第{:}次".format(i)
-            users_ref.child(A).set({
-                    'sum1':i+1,
-                    'name': self.save1[self.sum1-1],
-                    'SCoin':self.save2[self.sum1-1],
-                    'time':self.save3[self.sum1-1]
-            })
+            if self.sum1>0:
+                users_ref.child(A).set({
+                        'sum1':i+1,
+                        'name': self.save1[self.sum1-1],
+                        'SCoin':self.save2[self.sum1-1],
+                        'time':self.save3[self.sum1-1]
+                })
                 
             self.sumi_3_1=self.sumi_3
     
