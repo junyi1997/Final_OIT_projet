@@ -714,7 +714,7 @@ class MyApp(object):
                 A="第{:}次".format(i)
             if self.sum1>0:
                 users_ref.child(A).set({
-                        'sum1':i+1,
+                        'sum1':i,
                         'name': self.save1[self.sum1-1],
                         'SCoin': self.save2[self.sum1-1],
                         'time':self.save3[self.sum1-1]
@@ -731,7 +731,7 @@ class MyApp(object):
                 A="第{:}次".format(i)
             if self.sum1>0:    
                 users_ref.child(A).set({
-                    'sum1':i+1,
+                    'sum1':i,
                     'name': self.save1[self.sum1-1],
                     'SCoin': self.save2[self.sum1-1],
                    'time':self.save3[self.sum1-1]
@@ -748,7 +748,7 @@ class MyApp(object):
                 A="第{:}次".format(i)
             if self.sum1>0:
                 users_ref.child(A).set({
-                        'sum1':i+1,
+                        'sum1':i,
                         'name': self.save1[self.sum1-1],
                         'SCoin':self.save2[self.sum1-1],
                         'time':self.save3[self.sum1-1]
