@@ -77,7 +77,7 @@ class motor:
                GPIO.output(self.ou2_pin,GPIO.HIGH)
                GPIO.output(self.ou3_pin,GPIO.LOW)
                GPIO.output(self.ou4_pin,GPIO.LOW)
-               time.sleep(1)
+               time.sleep(.1)
                
                
          elif self.a ==0:
