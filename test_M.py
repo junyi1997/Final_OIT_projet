@@ -60,6 +60,7 @@ class motor:
       print("進入桶1")
       while True:
          self.a=GPIO.input(self.in1_pin)
+         self.b=GPIO.input(self.in2_pin)
          if self.a ==1:
                print("SW1啟動")
                GPIO.output(self.ou1_pin,GPIO.HIGH)
@@ -67,13 +68,35 @@ class motor:
                GPIO.output(self.ou3_pin,GPIO.LOW)
                GPIO.output(self.ou4_pin,GPIO.LOW)
                time.sleep(1)
-               self.my_main()
+               #self.my_main()
                return
-         elif self.a==0:
+
+         elif self.b ==1:
+               print("SW2啟動")
+               GPIO.output(self.ou1_pin,GPIO.HIGH)
+               GPIO.output(self.ou2_pin,GPIO.HIGH)
+               GPIO.output(self.ou3_pin,GPIO.LOW)
+               GPIO.output(self.ou4_pin,GPIO.LOW)
+               time.sleep(1)
+               return
+               
+         elif self.a ==0:
+             if self.b ==0:
                GPIO.output(self.ou1_pin,GPIO.HIGH)
                GPIO.output(self.ou2_pin,GPIO.LOW)
                GPIO.output(self.ou3_pin,GPIO.LOW)
                GPIO.output(self.ou4_pin,GPIO.HIGH)
+#               GPIO.output(self.ou1_pin,GPIO.HIGH)
+#               GPIO.output(self.ou2_pin,GPIO.HIGH)
+#               GPIO.output(self.ou3_pin,GPIO.LOW)
+#               GPIO.output(self.ou4_pin,GPIO.LOW)
+               #self.my_main()
+#               return
+#         elif self.b==0:
+#               GPIO.output(self.ou1_pin,GPIO.HIGH)
+#               GPIO.output(self.ou2_pin,GPIO.LOW)
+#               GPIO.output(self.ou3_pin,GPIO.LOW)
+#               GPIO.output(self.ou4_pin,GPIO.HIGH)
                
 
    def motor_2(self):
