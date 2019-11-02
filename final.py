@@ -713,9 +713,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[self.sumi_1_1],
-                        'SCoin': self.save2[self.sumi_1_1],
-                        'time':self.save3[self.sumi_1_1]
+                        'name': self.save1[self.sumi_1],
+                        'SCoin': self.save2[self.sumi_1],
+                        'time':self.save3[self.sumi_1]
                 })
             self.sumi_1_1=self.sumi_1
 
@@ -729,9 +729,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[self.sumi_2_1],
-                        'SCoin': self.save2[self.sumi_2_1],
-                        'time':self.save3[self.sumi_2_1]
+                        'name': self.save1[self.sumi_2],
+                        'SCoin': self.save2[self.sumi_2],
+                        'time':self.save3[self.sumi_2]
                 })
                 
             self.sumi_2_1=self.sumi_2     
@@ -745,9 +745,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[self.sumi_3_1],
-                        'SCoin':self.save2[self.sumi_3_1],
-                        'time':self.save3[self.sumi_3_1]
+                        'name': self.save1[self.sumi_3],
+                        'SCoin':self.save2[self.sumi_3],
+                        'time':self.save3[self.sumi_3]
                 })
                 
             self.sumi_3_1=self.sumi_3
@@ -1196,13 +1196,11 @@ class MyApp(object):
         
     def BOT(self,speaker):
         BotSpeak.speak(speaker)
-        time.sleep(2)
     
 
     
     def bt_塑膠1(self):
         Thread(target=app.BOT,args =("這是塑膠類",)).start()
-        time.sleep(10)
         print("countError_塑膠類",self.countError_塑膠類)
         if self.countError_塑膠類<10:
             self.bt_塑膠()
@@ -1213,7 +1211,6 @@ class MyApp(object):
             self.IFTTT("塑膠類")
     def bt_紙1(self):
         Thread(target=app.BOT,args =("這是紙類",)).start()
-        time.sleep(10)
         print("countError_紙類",self.countError_紙類)
         if self.countError_紙類<10:
             self.bt_紙()
@@ -1224,7 +1221,6 @@ class MyApp(object):
             self.IFTTT("紙膠類")
     def bt_鐵1(self):
         Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
-        time.sleep(10)
         print("countError_鐵類",self.countError_鐵類)
         if self.countError_鐵類<10:
             self.bt_鐵()
