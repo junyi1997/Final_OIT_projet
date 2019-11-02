@@ -714,9 +714,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[self.sum1],
-                        'SCoin': self.save2[self.sum1],
-                        'time':self.save3[self.sum1]
+                        'name': self.save1[self.sum1-1],
+                        'SCoin': self.save2[self.sum1-1],
+                        'time':self.save3[self.sum1-1]
                 })
             self.sumi_1_1=self.sumi_1
 
@@ -730,9 +730,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[self.sum1],
-                        'SCoin': self.save2[self.sum1],
-                        'time':self.save3[self.sum1]
+                        'name': self.save1[self.sum1-1],
+                        'SCoin': self.save2[self.sum1-1],
+                        'time':self.save3[self.sum1-1]
                 })
                 
             self.sumi_2_1=self.sumi_2     
@@ -746,9 +746,9 @@ class MyApp(object):
                     A="第{:}次".format(i+1)
                 users_ref.child(A).set({
                         'sum1':i+1,
-                        'name': self.save1[self.sum1],
-                        'SCoin':self.save2[self.sum1],
-                        'time':self.save3[self.sum1]
+                        'name': self.save1[self.sum1-1],
+                        'SCoin':self.save2[self.sum1-1],
+                        'time':self.save3[self.sum1-1]
                 })
                 
             self.sumi_3_1=self.sumi_3
