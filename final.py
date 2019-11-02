@@ -1193,6 +1193,7 @@ class MyApp(object):
         
     def BOT(self,speaker):
         BotSpeak.speak(speaker)
+        time.sleep(2)
     
 
     
