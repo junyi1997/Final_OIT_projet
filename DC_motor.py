@@ -63,13 +63,7 @@ class motor:
                time.sleep(1)
                #self.my_main()
                return
-         elif self.a==0:
-               GPIO.output(self.ou1_pin,GPIO.HIGH)
-               GPIO.output(self.ou2_pin,GPIO.LOW)
-               GPIO.output(self.ou3_pin,GPIO.LOW)
-               GPIO.output(self.ou4_pin,GPIO.HIGH)
-               
-               
+         
          elif self.b ==1:
                print("SW1啟動")
                GPIO.output(self.ou1_pin,GPIO.HIGH)
@@ -77,6 +71,11 @@ class motor:
                GPIO.output(self.ou3_pin,GPIO.LOW)
                GPIO.output(self.ou4_pin,GPIO.LOW)
                time.sleep(1)
+         else :
+               GPIO.output(self.ou1_pin,GPIO.HIGH)
+               GPIO.output(self.ou2_pin,GPIO.LOW)
+               GPIO.output(self.ou3_pin,GPIO.LOW)
+               GPIO.output(self.ou4_pin,GPIO.HIGH)
 #               GPIO.output(self.ou1_pin,GPIO.HIGH)
 #               GPIO.output(self.ou2_pin,GPIO.HIGH)
 #               GPIO.output(self.ou3_pin,GPIO.LOW)
