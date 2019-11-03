@@ -1238,7 +1238,6 @@ class MyApp(object):
 
         """"""
         Thread(target=app.BOT,args =("攝像頭開啟中，請稍後再投入垃圾",)).start()
-        Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
         GPIO.output(GUI_IN,GPIO.HIGH)
         self.win_main = tk.Toplevel()
         self.win_main.attributes("-fullscreen", True)
@@ -1379,6 +1378,6 @@ if __name__ == "__main__":
     users_ref = db.reference('/fb')
     app.sumi_3_1=app.sumi_3=len(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
-    
+    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
