@@ -116,7 +116,7 @@ class MyApp(object):
         but.place(x=12,y=330,height=60)
 
         def userPWD():
-            cleardata = tk.messagebox.askyesno('Welcome','是否為管理者？')
+            cleardata = tk.messagebox.askyesno('Welcome','是否為清潔隊員？')
             if cleardata:  
                 self.password()
 
@@ -190,22 +190,22 @@ class MyApp(object):
             self.usr_sign_up()
               
         var = tk.StringVar()
-        l = tk.Label(win_ch, bg='yellow', text='選擇要清除之資料庫',font= ('Noto Sans Mono CJK TC Regular',20))
+        l = tk.Label(win_ch, bg='yellow', text='選擇要清除之分類桶',font= ('Noto Sans Mono CJK TC Regular',20))
         l.place(x=10, y=10)
         btn_chpw = tk.Button(win_ch, text='更改密碼', bg='orange',font= ('Noto Sans Mono CJK TC Regular',20),command=chpwd)
         btn_chpw.place(x=250, y=100)
-        r1 = tk.Radiobutton(win_ch, text='Google',
-                            variable=var, value='Google',font= ('Noto Sans Mono CJK TC Regular',16),
+        r1 = tk.Radiobutton(win_ch, text='鐵鋁罐',
+                            variable=var, value='鐵鋁罐',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r1.place(x=50, y=70)
 
-        r2 = tk.Radiobutton(win_ch, text='Facebook',
-                            variable=var, value='fb',font= ('Noto Sans Mono CJK TC Regular',16),
+        r2 = tk.Radiobutton(win_ch, text='塑膠+玻璃',
+                            variable=var, value='塑膠+玻璃',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r2.place(x=50, y=130)
 
-        r3 = tk.Radiobutton(win_ch, text='QRcode',
-                            variable=var, value='QRcode',font= ('Noto Sans Mono CJK TC Regular',16),
+        r3 = tk.Radiobutton(win_ch, text='紙類+厚紙板',
+                            variable=var, value='紙類+厚紙板',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r3.place(x=50, y=190)
 
@@ -1245,11 +1245,11 @@ class MyApp(object):
                 print("鐵類滿了")
                 self.IFTTT("鐵類")
 
-        btn_塑膠 = tk.Button(self.win_main, text="塑膠",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=bt_塑膠1)
+        btn_塑膠 = tk.Button(self.win_main,command=bt_塑膠1)
         btn_塑膠.place(x=10,y=100)
-        btn_紙 = tk.Button(self.win_main, text="紙",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=bt_紙1)
+        btn_紙 = tk.Button(self.win_main,command=bt_紙1)
         btn_紙.place(x=10,y=200)
-        btn_鐵 = tk.Button(self.win_main, text="鐵",font= ('Noto Sans Mono CJK TC Regular',20),bg='#FBB03B',fg='white',command=bt_鐵1)
+        btn_鐵 = tk.Button(self.win_main,command=bt_鐵1)
         btn_鐵.place(x=10,y=300)
         
         #右上登入圖
