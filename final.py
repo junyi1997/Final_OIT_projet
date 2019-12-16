@@ -47,7 +47,7 @@ def sort_trash(imgpath):
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
         if GUI_a ==1:
-
+            
             print ("waiting for motion...")
             Thread(target=app.BOT,args =("請開始投入垃圾",)).start()
             C=motiondetector.waitForMotionDetection(camera.getPiCamera())
@@ -63,48 +63,64 @@ def sort_trash(imgpath):
                 print (labels)
                 selectedLabel = brain.getRecyclingLabel(labels)
                 is_trash = selectedLabel == None
-        
-                if is_trash:
-                    print("It's trash.")
+                metal =0
+                if GPIO.input(8) ==1:metal =1
+                if metal ==1:
+                    print("It's metal.")
+                    Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
+                    time.sleep(1)
                     m.my_DC()
                     time.sleep(1)
-                else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
-                    print("It's recyclable.")
-                    if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
-                        print("It's plastic or glass.")
-                        m.motor_2()
-                        time.sleep(2)
+                    thread1 = threading.Thread(target=app.bt_鐵1)
+                    thread1.start()
+                    thread1.join()
+                    time.sleep(5)
+                elif metal ==0:    
+                    if is_trash:
+                        print("It's trash.")
+                        Thread(target=app.BOT,args =("請開始投入垃圾",)).start()
                         m.my_DC()
                         time.sleep(1)
-                        m.motor_1()
-                        time.sleep(1)
-                        thread1 = threading.Thread(target=app.bt_塑膠1)
-                        thread1.start()
-                        thread1.join()
-                        time.sleep(5)
-                        
-                    elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
-                        print("It's paper.")
-                        m.motor_3()
-                        time.sleep(2)
-                        m.my_DC()
-                        time.sleep(1)
-                        m.motor_1()
-                        time.sleep(1)
-                        thread1 = threading.Thread(target=app.bt_紙1)
-                        thread1.start()
-                        thread1.join()
-                        time.sleep(5)
-                        
-                    elif str(selectedLabel).find('metal') != -1:
-                        print("It's metal.")
-                        time.sleep(1)
-                        m.my_DC()
-                        time.sleep(1)
-                        thread1 = threading.Thread(target=app.bt_鐵1)
-                        thread1.start()
-                        thread1.join()
-                        time.sleep(5)
+                    else:#app.bt_塑膠1  app.bt_紙1  app.bt_鐵1
+                        print("It's recyclable.")
+                        if str(selectedLabel).find('plastic') != -1 or str(selectedLabel).find('glass') != -1:
+                            print("It's plastic or glass.")
+                            Thread(target=app.BOT,args =("這是塑膠類",)).start()
+                            m.motor_2()
+                            time.sleep(2)
+                            m.my_DC()
+                            time.sleep(1)
+                            m.motor_1()
+                            time.sleep(1)
+                            thread1 = threading.Thread(target=app.bt_塑膠1)
+                            thread1.start()
+                            thread1.join()
+                            time.sleep(5)
+                            
+                        elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
+                            print("It's paper.")
+                            Thread(target=app.BOT,args =("這是紙類",)).start()
+                            m.motor_3()
+                            time.sleep(2)
+                            m.my_DC()
+                            time.sleep(1)
+                            m.motor_1()
+                            time.sleep(1)
+                            thread1 = threading.Thread(target=app.bt_紙1)
+                            thread1.start()
+                            thread1.join()
+                            time.sleep(5)
+                            
+                        elif str(selectedLabel).find('metal') != -1:
+                            print("It's metal.")
+                            Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
+                            time.sleep(1)
+                            m.my_DC()
+                            time.sleep(1)
+                            thread1 = threading.Thread(target=app.bt_鐵1)
+                            thread1.start()
+                            thread1.join()
+                            time.sleep(5)
 
             else:
                 time.sleep(10)#合併END
@@ -1204,7 +1220,7 @@ class MyApp(object):
 
     
     def bt_塑膠1(self):
-        Thread(target=app.BOT,args =("這是塑膠類",)).start()
+#        Thread(target=app.BOT,args =("這是塑膠類",)).start()
         print("countError_塑膠類",self.countError_塑膠類)
         if self.countError_塑膠類<10:
             self.bt_塑膠()
@@ -1214,7 +1230,7 @@ class MyApp(object):
             print("塑膠類滿了")
             self.IFTTT("塑膠類")
     def bt_紙1(self):
-        Thread(target=app.BOT,args =("這是紙類",)).start()
+#        Thread(target=app.BOT,args =("這是紙類",)).start()
         print("countError_紙類",self.countError_紙類)
         if self.countError_紙類<10:
             self.bt_紙()
@@ -1224,7 +1240,7 @@ class MyApp(object):
             print("紙類滿了")
             self.IFTTT("紙膠類")
     def bt_鐵1(self):
-        Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
+#        Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
         print("countError_鐵類",self.countError_鐵類)
         if self.countError_鐵類<10:
             self.bt_鐵()
