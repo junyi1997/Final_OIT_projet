@@ -1384,7 +1384,7 @@ if __name__ == "__main__":
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(GUI_IN, GPIO.OUT)    
     GPIO.output(GUI_IN,GPIO.LOW)
-    
+    #1321231231
     win = tk.Tk()
     win.attributes("-fullscreen", True)
     win.geometry("800x470")
