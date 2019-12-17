@@ -7,7 +7,7 @@ Created on Wed Oct 30 15:35:08 2019
 
 import RPi.GPIO as GPIO
 import time
-in1_pin=12#一般桶
+in1_pin=10#一般桶
 #in2_pin=38#塑膠桶
 #in3_pin=40#紙類桶
 GPIO.setwarnings(False)
