@@ -43,8 +43,7 @@ def sort_trash(imgpath):
 	# statusThread = ui.start_status_shower_thread()
     while True:
         GUI_a=GPIO.input(8)
-        if GPIO.input(10) ==1:metal =1
-        else:metal =0
+        metal=GPIO.input(8)
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
         if GUI_a ==1:
@@ -64,7 +63,6 @@ def sort_trash(imgpath):
                 print (labels)
                 selectedLabel = brain.getRecyclingLabel(labels)
                 is_trash = selectedLabel == None
-                
                 if metal ==1:
                     print("It's metal.")
                     Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
@@ -1381,12 +1379,10 @@ if __name__ == "__main__":
     GUI_IN=8#馬達IN1
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(GUI_IN, GPIO.OUT)    
+    GPIO.setup(GUI_IN, GPIO.OUT)
     GPIO.output(GUI_IN,GPIO.LOW)
-    GPIO.setup(10, GPIO.OUT)    
     GPIO.output(10,GPIO.LOW)
     
-    #1321231231
     win = tk.Tk()
     win.attributes("-fullscreen", True)
     win.geometry("800x470")
