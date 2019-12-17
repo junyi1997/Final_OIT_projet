@@ -43,7 +43,7 @@ def sort_trash(imgpath):
 	# statusThread = ui.start_status_shower_thread()
     while True:
         GUI_a=GPIO.input(8)
-        metal=GPIO.input(8)
+        metal=GPIO.input(10)
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
         if GUI_a ==1:
