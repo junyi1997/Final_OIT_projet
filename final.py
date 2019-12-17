@@ -43,7 +43,8 @@ def sort_trash(imgpath):
 	# statusThread = ui.start_status_shower_thread()
     while True:
         GUI_a=GPIO.input(8)
-
+        if GPIO.input(8) ==1:metal =1
+        else:metal =0
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
         if GUI_a ==1:
@@ -1382,6 +1383,9 @@ if __name__ == "__main__":
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(GUI_IN, GPIO.OUT)
+    GPIO.output(GUI_IN,GPIO.LOW)
+    GPIO.output(10,GPIO.LOW)
+    
     win = tk.Tk()
     win.attributes("-fullscreen", True)
     win.geometry("800x470")
