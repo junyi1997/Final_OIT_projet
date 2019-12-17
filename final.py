@@ -71,10 +71,11 @@ def sort_trash(imgpath):
                     time.sleep(1)
                     m.my_DC()
                     time.sleep(1)
-                    thread1 = threading.Thread(target=app.bt_鐵1)
-                    thread1.start()
-                    thread1.join()
-                    time.sleep(5)
+                    app.bt_鐵1()
+#                    thread1 = threading.Thread(target=app.bt_鐵1)
+#                    thread1.start()
+#                    thread1.join()
+#                    time.sleep(5)
                 elif metal ==0:    
                     if is_trash:
                         print("It's trash.")
@@ -92,10 +93,11 @@ def sort_trash(imgpath):
                             time.sleep(1)
                             m.motor_1()
                             time.sleep(1)
-                            thread1 = threading.Thread(target=app.bt_塑膠1)
-                            thread1.start()
-                            thread1.join()
-                            time.sleep(5)
+                            app.bt_塑膠1()
+#                            thread1 = threading.Thread(target=app.bt_塑膠1)
+#                            thread1.start()
+#                            thread1.join()
+#                            time.sleep(5)
                             
                         elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
                             print("It's paper.")
@@ -106,10 +108,11 @@ def sort_trash(imgpath):
                             time.sleep(1)
                             m.motor_1()
                             time.sleep(1)
-                            thread1 = threading.Thread(target=app.bt_紙1)
-                            thread1.start()
-                            thread1.join()
-                            time.sleep(5)
+                            app.bt_紙1()
+#                            thread1 = threading.Thread(target=app.bt_紙1)
+#                            thread1.start()
+#                            thread1.join()
+#                            time.sleep(5)
                             
                         elif str(selectedLabel).find('metal') != -1:
                             print("It's metal.")
@@ -1206,7 +1209,9 @@ class MyApp(object):
         #顯示樣式總類
         label_sum2.configure(text=self.sum2)
         #顯示總金額
-        label_SUM.configure(text=self.sum)        
+        label_SUM.configure(text=self.sum)     
+        
+        sort_trash("ImageProcessing/img/classificationImage.jpg")
     #----------------------------------------------------------------------
     def IFTTT(self,ob):
         c="{:}分類垃圾桶已滿，請盡速處理..."
@@ -1251,7 +1256,7 @@ class MyApp(object):
             self.IFTTT("鐵類")
     #-----------------------------------------------------------------------
     def openFrame1(self):
-
+        
         """"""
         Thread(target=app.BOT,args =("攝像頭開啟中，請稍後再投入垃圾",)).start()
         GPIO.output(GUI_IN,GPIO.HIGH)
@@ -1352,7 +1357,7 @@ class MyApp(object):
             self.saveK1.clear()
             self.saveK2.clear()
             self.saveK3.clear()
-        
+        sort_trash("ImageProcessing/img/classificationImage.jpg")
     #----------------------------------------------------------------------
     def onCloseOtherFrame(self, otherFrame):
         """"""
@@ -1399,6 +1404,6 @@ if __name__ == "__main__":
     users_ref = db.reference('/fb')
     app.sumi_3_1=app.sumi_3=len(users_ref.get())
     Thread(target=app.BOT,args =("歡迎來到智慧分類垃圾桶",)).start()
-    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
+#    Thread(target=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     win.mainloop()
     Thread(target=app.BOT,args =("掰掰",)).start()
