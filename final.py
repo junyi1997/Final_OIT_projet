@@ -74,7 +74,7 @@ def sort_trash(imgpath):
                     app.bt_鐵1()
 #                    thread1 = threading.Thread(target=app.bt_鐵1)
 #                    thread1.start()
-#                    thread1.join()
+                    app.thread3.join()
 #                    time.sleep(5)
                 elif metal ==0:    
                     if is_trash:
@@ -96,7 +96,7 @@ def sort_trash(imgpath):
                             app.bt_塑膠1()
 #                            thread1 = threading.Thread(target=app.bt_塑膠1)
 #                            thread1.start()
-#                            thread1.join()
+                            app.thread3.join()
 #                            time.sleep(5)
                             
                         elif str(selectedLabel).find('paper') != -1 or str(selectedLabel).find('cardboard') != -1:
@@ -111,7 +111,7 @@ def sort_trash(imgpath):
                             app.bt_紙1()
 #                            thread1 = threading.Thread(target=app.bt_紙1)
 #                            thread1.start()
-#                            thread1.join()
+                            app.thread3.join()
 #                            time.sleep(5)
                             
                         elif str(selectedLabel).find('metal') != -1:
@@ -1357,7 +1357,7 @@ class MyApp(object):
             self.saveK1.clear()
             self.saveK2.clear()
             self.saveK3.clear()
-        sort_trash("ImageProcessing/img/classificationImage.jpg")
+        Thread(target3=sort_trash,args = ("ImageProcessing/img/classificationImage.jpg",)).start()
     #----------------------------------------------------------------------
     def onCloseOtherFrame(self, otherFrame):
         """"""
