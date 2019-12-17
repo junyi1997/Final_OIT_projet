@@ -43,7 +43,7 @@ def sort_trash(imgpath):
 	# statusThread = ui.start_status_shower_thread()
     while True:
         GUI_a=GPIO.input(8)
-        if GPIO.input(8) ==1:metal =1
+        if GPIO.input(10) ==1:metal =1
         else:metal =0
 		# wait for camera to detect motion, then sleep for a bit to
 		# let the object settle down
@@ -64,8 +64,7 @@ def sort_trash(imgpath):
                 print (labels)
                 selectedLabel = brain.getRecyclingLabel(labels)
                 is_trash = selectedLabel == None
-                metal =0
-                if GPIO.input(8) ==1:metal =1
+                
                 if metal ==1:
                     print("It's metal.")
                     Thread(target=app.BOT,args =("這是鐵鋁罐",)).start()
