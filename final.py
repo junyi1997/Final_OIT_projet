@@ -1382,9 +1382,8 @@ if __name__ == "__main__":
     GUI_IN=8#馬達IN1
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(GUI_IN, GPIO.OUT)
+    GPIO.setup(GUI_IN, GPIO.OUT)    
     GPIO.output(GUI_IN,GPIO.LOW)
-    GPIO.output(10,GPIO.LOW)
     
     win = tk.Tk()
     win.attributes("-fullscreen", True)
