@@ -34,7 +34,7 @@ def speak(text):
     speak_i()
     bot_speak(text,'zh-tw')  # 說出text
     
-    bot_speak("1111111",'zh-tw')  # 說出text
+#    bot_speak("1111111",'zh-tw')  # 說出text
     
 
             
