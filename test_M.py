@@ -50,7 +50,7 @@ class motor:
       print("蓋子關閉")
       GPIO.output(self.ouZ2_pin,GPIO.LOW)
       GPIO.output(self.ouZ1_pin,GPIO.HIGH)
-      time.sleep(.6)
+      time.sleep(.5)
       GPIO.output(self.ouZ1_pin,GPIO.LOW)
       GPIO.output(self.ouZ2_pin,GPIO.LOW)
       print("蓋子到定點1")
