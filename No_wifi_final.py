@@ -911,7 +911,7 @@ class MyApp(object):
         self.saveK4.clear()
         
         ############################################################################################################
-#        if self.tit == "Google":
+        if self.tit == "Google":
 #            self.sumi_1=0
 #            #Get Collection
 #            over=1 
@@ -940,7 +940,7 @@ class MyApp(object):
             for c in range(self.sumi_1):
                 tree.insert("",c,values=(self.saveK1[c],self.saveK2[c],self.saveK3[c],self.saveK4[c])) #插入數據                 
         ##############################################################################    
-#        elif self.tit == "fb":
+        elif self.tit == "fb":
 #            self.sumi_2=0
 #            #Get Collection
 #            over=1 
@@ -965,10 +965,10 @@ class MyApp(object):
 #                    over=0  
 #                   
 #        ##############################################################################
-#            for c in range(self.sumi_2):
-#                tree.insert("",c,values=(self.saveK1[c],self.saveK2[c],self.saveK3[c],self.saveK4[c])) #插入數據                 
+            for c in range(self.sumi_2):
+                tree.insert("",c,values=(self.saveK1[c],self.saveK2[c],self.saveK3[c],self.saveK4[c])) #插入數據                 
 #        ##############################################################################            
-#        elif self.tit =="QR":
+        elif self.tit =="QR":
 #            self.sumi_3=0
 #            #Get Collection
 #            over=1 
@@ -993,8 +993,8 @@ class MyApp(object):
 #                    over=0  
 #                         
 #        ##############################################################################
-#            for c in range(self.sumi_3):
-#                tree.insert("",c,values=(self.saveK1[c],self.saveK2[c],self.saveK3[c],self.saveK4[c])) #插入數據                 
+            for c in range(self.sumi_3):
+                tree.insert("",c,values=(self.saveK1[c],self.saveK2[c],self.saveK3[c],self.saveK4[c])) #插入數據                 
         ##############################################################################
     #----------------------------------------------------------------------
     def bt_search(self):
@@ -1208,7 +1208,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def IFTTT(self,ob):
         c="{:}分類垃圾桶已滿，請盡速處理..."
-#        c=c.format(ob)
+        c=c.format(ob)
 #        a=quote(c,'utf-8')
 #        urlopen("https://maker.ifttt.com/trigger/105103308/with/key/dqTARGjv_Q1zeS_-LY1TyV?value1={:}".format(a))
         
