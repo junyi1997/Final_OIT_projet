@@ -826,7 +826,7 @@ class MyApp(object):
         handler = lambda: self.onCloseOtherFrame(win_HOW) , BotSpeak.stop()
         btn = tk.Button(win_HOW, text="continue",command=handler,font= ('Noto Sans Mono CJK TC Regular',20),fg='white',bg='Maroon',width=8)
         btn.place(x=330,y=380)
-        but_BZ=tk.Button(win_HOW,image=win_HOW.BZ,command=self.spaekHowToUse()) 
+        but_BZ=tk.Button(win_HOW,image=win_HOW.BZ,command=lambda:print("開始說明"),self.spaekHowToUse()) 
         but_BZ.place(x=720,y=0,width=80,height=80)
         
     #----------------------------------------------------------------------
