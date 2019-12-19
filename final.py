@@ -49,6 +49,7 @@ def sort_trash(imgpath):
         if GUI_a ==1:
             
             print ("waiting for motion...")
+            
             Thread(target=app.BOT,args =("請開始投入垃圾",)).start()
             C=motiondetector.waitForMotionDetection(camera.getPiCamera())
             time.sleep(0.5) # Lets object settle down, TODO maybe remove
@@ -121,6 +122,7 @@ def sort_trash(imgpath):
                             time.sleep(5)
 
             else:
+                BotSpeak.stop()
                 time.sleep(10)#合併END
 ########################################################################
 
@@ -821,7 +823,7 @@ class MyApp(object):
         #背景
         canvas.create_image(400,240, image=win_HOW.photo_background)
 
-        handler = lambda: self.onCloseOtherFrame(win_HOW)
+        handler = lambda: self.onCloseOtherFrame(win_HOW) , BotSpeak.stop()
         btn = tk.Button(win_HOW, text="continue",command=handler,font= ('Noto Sans Mono CJK TC Regular',20),fg='white',bg='Maroon',width=8)
         btn.place(x=330,y=380)
         but_BZ=tk.Button(win_HOW,image=win_HOW.BZ,command=self.spaekHowToUse()) 
@@ -1213,6 +1215,8 @@ class MyApp(object):
         urlopen("https://maker.ifttt.com/trigger/105103308/with/key/dqTARGjv_Q1zeS_-LY1TyV?value1={:}".format(a))
         
     def BOT(self,speaker):
+        BotSpeak.stop()
+        time.sleep(.1)
         BotSpeak.speak(speaker)
     
 
