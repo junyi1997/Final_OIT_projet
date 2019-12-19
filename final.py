@@ -1215,8 +1215,8 @@ class MyApp(object):
         urlopen("https://maker.ifttt.com/trigger/105103308/with/key/dqTARGjv_Q1zeS_-LY1TyV?value1={:}".format(a))
         
     def BOT(self,speaker):
-        BotSpeak.stop()
-        time.sleep(.1)
+#        BotSpeak.stop()
+#        time.sleep(.1)
         BotSpeak.speak(speaker)
     
 
