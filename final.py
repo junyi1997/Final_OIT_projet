@@ -824,7 +824,7 @@ class MyApp(object):
         #背景
         canvas.create_image(400,240, image=win_HOW.photo_background)
 
-        handler = lambda: self.onCloseOtherFrame(win_HOW) , BotSpeak.stop()
+        handler = lambda: self.onCloseOtherFrame(win_HOW)
         btn = tk.Button(win_HOW, text="continue",command=handler,font= ('Noto Sans Mono CJK TC Regular',20),fg='white',bg='Maroon',width=8)
         btn.place(x=330,y=380)
         but_BZ=tk.Button(win_HOW,image=win_HOW.BZ,command=lambda:self.spaekHowToUse()) 
@@ -1359,6 +1359,7 @@ class MyApp(object):
     #----------------------------------------------------------------------
     def onCloseOtherFrame(self, otherFrame):
         """"""
+        BotSpeak.stop()
         otherFrame.destroy()
         self.show()
     #----------------------------------------------------------------------
