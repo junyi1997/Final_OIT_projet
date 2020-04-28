@@ -3,7 +3,7 @@ import pygame
 from pygame import mixer    
 from gtts import gTTS
 import time
-a="這是紙類"
+
 b=""
 def speak_i():
     mixer.init()    # 初始化
@@ -17,10 +17,10 @@ def bot_speak(text, lang):    # 建立自訂函式
         mixer.music.load('tmp.mp3')    # 讀取不重要的聲音檔
         tts = gTTS(text=text, lang=lang)   
         b='{:}.mp3'
-        b=b.format(a)
+        b=b.format(text)
 #        tts.save('歡迎來到智慧分類垃圾桶.mp3')    
 #        mixer.music.load('歡迎來到智慧分類垃圾桶.mp3')	  
-        tts.save(b)    
+#        tts.save(b)    
         mixer.music.load(b)	
         mixer.music.play()    # 播放重要的聲音檔
 #        if input("") =="q":
@@ -36,17 +36,11 @@ def stop():
 def speak(text):
 
     speak_i()
-    #bot_speak(text,'zh-tw')  # 說出text
-    bot_speak(a,'zh-tw')  # 說出text
+    bot_speak(text,'zh-tw')  # 說出text
 #    bot_speak("歡迎來到智慧分類垃圾桶",'zh-tw')  # 說出text
-    
-
-            
-        
-        
-    
+ 
 def mymain():
-    speak('123456789012345678901234567890')
+    speak('這是紙類')
 
 if __name__=="__main__":
     mymain()

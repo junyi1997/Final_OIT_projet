@@ -23,7 +23,7 @@ from urllib.parse import quote
 from threading import Thread
 import threading
 #引用語音說明
-import BotSpeak
+import BotSpeak_NO_WIFI as BotSpeak
 import RPi.GPIO as GPIO
 ##chenfTensorflow01.py code
 from ImageProcessing.camera import Camera
