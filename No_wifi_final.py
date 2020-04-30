@@ -272,7 +272,7 @@ class MyApp(object):
         def Quit():
             win.destroy()
             win_ch.destroy()
-            win_pw_sign_up.destroy()
+
         btn_exit = tk.Button(win_ch, text='離開',font= ('Noto Sans Mono CJK TC Regular',18), command= lambda:Quit())
         btn_exit.place(x=600, y=190)
     def usr_sign_up(self):
