@@ -266,7 +266,9 @@ class MyApp(object):
                             variable=var, value='紙類+厚紙板',font= ('Noto Sans Mono CJK TC Regular',16),
                             command=print_selection)
         r3.place(x=50, y=190)
-
+        #離開按鈕
+        btn_exit = tk.Button(win_ch, text='離開',font= ('Noto Sans Mono CJK TC Regular',18), command=quit)
+        btn_exit.place(x=50, y=190)
     def usr_sign_up(self):
 
         def sign_to_Mofan_Python():
