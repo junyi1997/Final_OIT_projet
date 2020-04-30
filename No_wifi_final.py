@@ -219,6 +219,9 @@ class MyApp(object):
         but_QR=tk.Button(win,image=self.photo_Clear, command=userPWD) 
         but_QR.place(x=750,y=0,width=50,height=60)
     #----------------------------------------------------------------------
+    def Quit():
+        win.destroy()
+    
     def chooseclear(self):
         win_ch = tk.Toplevel()
         win_ch.geometry('500x250+130+130')
@@ -267,7 +270,7 @@ class MyApp(object):
                             command=print_selection)
         r3.place(x=50, y=190)
         #離開按鈕
-        btn_exit = tk.Button(win_ch, text='離開',font= ('Noto Sans Mono CJK TC Regular',18), command=quit)
+        btn_exit = tk.Button(win_ch, text='離開',font= ('Noto Sans Mono CJK TC Regular',18), command= lambda:Quit())
         btn_exit.place(x=50, y=190)
     def usr_sign_up(self):
 
