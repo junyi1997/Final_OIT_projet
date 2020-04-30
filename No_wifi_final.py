@@ -274,7 +274,7 @@ class MyApp(object):
             win_ch.destroy()
 
         btn_exit = tk.Button(win_ch, text='離開',font= ('Noto Sans Mono CJK TC Regular',18), command= lambda:Quit())
-        btn_exit.place(x=600, y=190)
+        btn_exit.place(x=400, y=190)
     def usr_sign_up(self):
 
         def sign_to_Mofan_Python():
